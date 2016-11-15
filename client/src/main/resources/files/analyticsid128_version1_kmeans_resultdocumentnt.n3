@@ -1,0 +1,304 @@
+@prefix : <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#> .
+@prefix opmv: <http://purl.org/net/opmv/ns#> .
+@prefix dgu: <http://reference.data.gov.uk/def/reference/> .
+@prefix pizzas: <http://example.org/pizzas#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema> .
+@prefix g-projects: <http://worldbank.270a.info/graph/world-bank-projects-and-operations> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix organogram: <http://reference.data.gov.uk/def/organogram/> .
+@prefix income-level: <http://worldbank.270a.info/classification/income-level/> .
+@prefix year: <http://reference.data.gov.uk/id/year/> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix d-indicators: <http://worldbank.270a.info/dataset/world-bank-indicators> .
+@prefix topic: <http://worldbank.270a.info/classification/topic/> .
+@prefix sdmx-measure: <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix dbpedia-owl: <http://dbpedia.org/ontology/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dic: <http://eurostat.linked-statistics.org/dic/> .
+@prefix payband: <http://reference.data.gov.uk/def/civil-service-payband/> .
+@prefix lending-type: <http://worldbank.270a.info/classification/lending-type/> .
+@prefix ow: <http://swrc.ontoware.org/ontology#> .
+@prefix dgtwc: <http://data-gov.tw.rpi.edu/2009/data-gov-twc.rdf#> .
+@prefix wbldfn: <http://worldbank.270a.info/xpath-function/> .
+@prefix project: <http://worldbank.270a.info/classification/project/> .
+@prefix scenario: <http://worldbank.270a.info/classification/scenario/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix anltcs: <http://eu.linda.analytics/> .
+@prefix sdmx-metadata: <http://purl.org/linked-data/sdmx/2009/metadata#> .
+@prefix wb: <http://www.worldbank.org> .
+@prefix d-finances: <http://worldbank.270a.info/dataset/world-bank-finances/> .
+@prefix region: <http://worldbank.270a.info/classification/region/> .
+@prefix g-indicators: <http://worldbank.270a.info/graph/world-development-indicators> .
+@prefix data: <http://eurostat.linked-statistics.org/data/> .
+@prefix space: <http://www.w3.org/ns/pim/space#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix g-void: <http://worldbank.270a.info/graph/void> .
+@prefix currency: <http://worldbank.270a.info/classification/currency/> .
+@prefix prof: <http://reference.data.gov.uk/def/civil-service-profession/> .
+@prefix title: <http://eurostat.linked-statistics.org/title#> .
+@prefix cert: <http://www.w3.org/ns/auth/cert#> .
+@prefix g-meta: <http://worldbank.270a.info/graph/meta> .
+@prefix grade: <http://reference.data.gov.uk/def/civil-service-grade/> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix ds: <http://localhost:8080/openrdf-sesame/repositories/myRepository/statements?context=:_analytics5V0Date29102014/5/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix web: <http://my-profile.eu/ns/webapp#> .
+@prefix g-climates: <http://worldbank.270a.info/graph/world-bank-climates> .
+@prefix my: <http://www.cs.vu.nl/~mcaklein/onto/swrc-ext/2005/05#> .
+@prefix d-climates: <http://worldbank.270a.info/dataset/world-bank-climates/> .
+@prefix sio: <http://semanticscience.org/ontology/sio#> .
+@prefix classification: <http://worldbank.270a.info/classification/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix g-finances: <http://worldbank.270a.info/graph/world-bank-finances> .
+@prefix postStatus: <http://reference.data.gov.uk/def/civil-service-post-status/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix dsbase: <http://health.data.ny.gov/resource/> .
+@prefix variable: <http://worldbank.270a.info/classification/variable/> .
+@prefix socrata: <http://www.socrata.com/rdf/terms#> .
+@prefix con: <http://www.w3.org/2000/10/swap/pim/contact#> .
+@prefix global-circulation-model: <http://worldbank.270a.info/classification/global-circulation-model/> .
+@prefix dss: <http://eurostat.linked-statistics.org/dss#> .
+@prefix copmv: <http://purl.org/net/opmv/types/common#> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dbp: <http://dbpedia.org/property/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix scovo: <http://purl.org/NET/scovo#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix ns15: <http://data.nytimes.com/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix property: <http://eurostat.linked-statistics.org/property#> .
+@prefix ns12: <http://www.geonames.org/ontology#> .
+@prefix ods: <http://open-data-standards.github.com/2012/01/open-data-standards#> .
+@prefix country: <http://worldbank.270a.info/classification/country/> .
+@prefix loan-status: <http://worldbank.270a.info/classification/loan-status/> .
+@prefix food: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#> .
+@prefix sdmxa: <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix wbld: <http://worldbank.270a.info/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix cd: <http://www.recshop.fake/cd#> .
+@prefix gov: <http://reference.data.gov.uk/def/central-government/> .
+@prefix quarter: <http://reference.data.gov.uk/id/quarter/> .
+@prefix sdmx-subject: <http://purl.org/linked-data/sdmx/2009/subject#> .
+@prefix indicator: <http://worldbank.270a.info/classification/indicator/> .
+@prefix concept: <http://eurostat.linked-statistics.org/concept#> .
+@prefix stats: <http://stats.270a.info/vocab#> .
+@prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmx-code: <http://purl.org/linked-data/sdmx/2009/code#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ns9: <http://localhost:8080/openrdf-sesame/repositories/linda/rdf-graphs/analyticsontology#User/> .
+@prefix resource: <http://semanticscience.org/resource/> .
+@prefix ns5: <http://health.data.ny.gov/resource/hbu9-xsrx/> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/> .
+@prefix companycustomer: <http://mycompany/customer/> .
+@prefix ns8: <http://localhost:8080/openrdf-sesame/repositories/linda/rdf-graphs/analyticsontology#Software/> .
+@prefix source: <http://worldbank.270a.info/classification/source/> .
+@prefix dataset: <http://worldbank.270a.info/dataset/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix an: <http://localhost:8080/openrdf-sesame/repositories/linda/rdf-graphs/analyticsontology#> .
+@prefix sdmx: <http://purl.org/linked-data/sdmx#> .
+@prefix dsd: <http://eurostat.linked-statistics.org/dsd/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ldao: <http://linda-project.eu/ontology/ldao.owl#> .
+@prefix usps: <http://www.w3.org/2000/10/swap/pim/usps#> .
+@prefix inail: <http://dati.inail.it#> .
+@prefix admin: <http://webns.net/mvcb/> .
+@prefix sy: <http://purl.org/rss/1.0/modules/syndication/> .
+@prefix daq: <http://purl.org/eis/vocab/daq#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix dbpedia: <http://dbpedia.org/resource> .
+@prefix sioc: <http://rdfs.org/sioc/ns#> .
+@prefix gndo: <http://d-nb.info/standards/elementset/gnd#> .
+@prefix frapo: <http://purl.org/cerif/frapo/> .
+@prefix akt: <http://www.aktors.org/ontology/portal#> .
+@prefix sdo: <http://schema.org/> .
+@prefix scip: <http://lod.taxonconcept.org/ontology/sci_people.owl#> .
+@prefix wo: <http://purl.org/ontology/wo/> .
+@prefix drm: <http://vocab.data.gov/def/drm#> .
+@prefix ns0: <http://www.hospitals_reviewer.com/schema#> .
+@prefix agrelon: <http://d-nb.info/standards/elementset/agrelon.owl#> .
+@prefix poder: <http://dev.poderopedia.com/vocab/> .
+@prefix transit: <http://vocab.org/transit/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix plo: <http://purl.org/net/po#> .
+@prefix af: <http://purl.org/ontology/af/> .
+@prefix chord: <http://purl.org/ontology/chord/> .
+@prefix oslc: <http://open-services.net/ns/core#> .
+@prefix swo: <http://linda-project.eu/hackathon/star-wars-ontology/> .
+@prefix agegroup: <http://dbpedia.org/ontology/category#> .
+@prefix of: <http://owlrep.eu01.aws.af.cm/fridge#> .
+@prefix lgdo: <http://linkedgeodata.org/ontology/> .
+@prefix pna: <http://data.press.net/ontology/asset/> .
+@prefix cwork: <http://www.bbc.co.uk/ontologies/creativework/> .
+@prefix swpo: <http://sw-portal.deri.org/ontologies/swportal#> .
+@prefix fea: <http://vocab.data.gov/def/fea#> .
+@prefix Modular: <http://leeds.ac.uk/computing/krr/ontology/Modular.owl#> .
+@prefix osmethodology: <http://www.ordnancesurvey.co.uk/ontologies/osmethodology/1.0/> .
+@prefix ace_lexicon: <http://attempto.ifi.uzh.ch/ace_lexicon#> .
+@prefix dbo: <http://dbpedia.org/ontology#> .
+@prefix cyattack: <http://www.ubitech.eu/cyberattack#> .
+@prefix msr: <http://www.telegraphis.net/ontology/measurement/measurement#> .
+@prefix vvo: <http://purl.org/vvo/ns#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix mrel: <http://id.loc.gov/vocabulary/relators/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix passim: <http://data.lirmm.fr/ontologies/passim#> .
+@prefix ad: <http://schemas.talis.com/2005/address/schema#> .
+@prefix vivo: <http://vivoweb.org/ontology/core#> .
+@prefix md: <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#> .
+@prefix am: <http://open-services.net/ns/asset#> .
+@prefix locah: <http://data.archiveshub.ac.uk/def/> .
+@prefix rdag1: <http://rdvocab.info/Elements/> .
+@prefix place: <http://purl.org/ontology/places#> .
+@prefix bag: <http://bag.kadaster.nl/def#> .
+@prefix person: <https://www.w3.org/ns/person#> .
+@prefix identity: <http://purl.org/twc/ontologies/identity.owl#> .
+@prefix being: <http://contextus.net/ontology/ontomedia/ext/common/being#> .
+@prefix service: <http://purl.org/ontology/service#> .
+@prefix rdag2: <http://rdvocab.info/ElementsGr2> .
+@prefix rel: <http://purl.org/vocab/relationship/> .
+@prefix g6: <http://BPIL.com#> .
+@prefix nco: <http://www.semanticdesktop.org/ontologies/2007/03/22/nco#> .
+@prefix npg: <http://ns.nature.com/terms/Person> .
+@prefix dicom: <http://purl.org/healthcarevocab/v1#> .
+@prefix saref: <https://w3id.org/saref#> .
+@prefix gr: <http://purl.org/goodrelations/v1#> .
+@prefix mads: <http://www.loc.gov/mads/rdf/v1#> .
+@prefix sor: <http://purl.org/net/soron/#> .
+@prefix ioto: <http://www.irit.fr/recherches/MELODI/ontologies/IoT-O#> .
+@prefix pns: <http://data.press.net/ontology/stuff/> .
+@prefix eclap: <http://www.eclap.eu/schema/eclap/> .
+@prefix daia: <http://purl.org/ontology/daia/> .
+@prefix trait: <http://contextus.net/ontology/ontomedia/ext/common/trait#> .
+@prefix kcb-triples: <http://minion02.sensorlab.tno.nl/ontologies/bigtu-kcb_triples#> .
+@prefix gpc: <http://minion02.sensorlab.tno.nl/ontologies/bigtu-gpc#> .
+@prefix kcb: <http://minion02.sensorlab.tno.nl/ontologies/bigtu-kcb#> .
+@prefix gpc-triples: <http://minion02.sensorlab.tno.nl/ontologies/bigtu-gpc_triples#> .
+@prefix gpc-gs1: <http://www.ebusiness-unibw.org/ontologies/pcs2owl/gpc/> .
+@prefix wapa: <http://minion02.sensorlab.tno.nl/ontologies/bigtu-wapa#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix chm: <http://minion02.sensorlab.tno.nl/ontologies/bigtu-chm#> .
+@prefix wapa-triples: <http://minion02.sensorlab.tno.nl/ontologies/bigtu-wapa_triples#> .
+@prefix ic: <http://ontology.eil.utoronto.ca/icontact.owl#> .
+@prefix og: <http://opengraphprotocol.org/schema/> .
+@prefix owl11: <http://www.w3.org/2006/12/owl11#> .
+@prefix owl11xml: <http://www.w3.org/2006/12/owl11-xml#> .
+@prefix pizza: <http://www.co-ode.org/ontologies/pizza/pizza.owl#> .
+@prefix webprotege: <http://webprotege.stanford.edu/> .
+@prefix untitled-ontology-26: <http://www.semanticweb.org/shezo/ontologies/2013/2/untitled-ontology-26#> .
+@prefix uniprot: <http://purl.uniprot.org/core/> .
+
+<http://linda-project.eu/pilot-observations/5580> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/1> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/1> .
+	
+	
+<http://linda-project.eu/pilot-observations/5581> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/1> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/1> .
+	
+<http://linda-project.eu/pilot-observations/5582> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/1> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/1> .
+	
+	
+<http://linda-project.eu/pilot-observations/5544> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/2> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/2> .
+	
+	
+<http://linda-project.eu/pilot-observations/5545> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/2> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/2> .
+	
+<http://linda-project.eu/pilot-observations/5546> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/2> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/2> .
+	
+	
+<http://linda-project.eu/pilot-observations/5555> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> .
+	
+<http://linda-project.eu/pilot-observations/5556> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> .
+	
+<http://linda-project.eu/pilot-observations/5557> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> .
+	
+<http://linda-project.eu/pilot-observations/5558> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> .
+	
+<http://linda-project.eu/pilot-observations/5559> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> , <http://localhost:8000/analyticsontolog/analytic_input_collection/128/V2/3> .
+	
+<http://linda-project.eu/pilot-observations/5560> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> .
+	
+<http://linda-project.eu/pilot-observations/5561> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> .
+	
+<http://linda-project.eu/pilot-observations/5562> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> .
+	
+<http://linda-project.eu/pilot-observations/5563> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> .
+	
+<http://linda-project.eu/pilot-observations/5564> a <http://localhost:8000/analyticsontology#analytic_input_node> ;
+	dc:isPartOf <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> , <http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> .
+
+
+<http://localhost:8000/analyticsontology#Software/LinDa_analytics_software> a <http://localhost:8000/analyticsontology#Software> ;
+	rdfs:label "Software" ;
+	prov:actedOnBehalfOf <http://localhost:8000/analyticsontology#User/criticalPublic> ;
+	rdfs:subClassOf prov:Agent .
+
+<http://localhost:8000/analyticsontology#User/criticalPublic> a <http://localhost:8000/analyticsontology#User> ;
+	rdfs:label "User" ;
+	foaf:accountName "criticalPublic" ;
+	foaf:holdsAccount _:node1a904jvcux1 ;
+	owl:equivalentClass foaf:Person ;
+	rdfs:subClassOf prov:Agent .
+
+<http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/1> a <http://localhost:8000/analyticsontology#analytic_input_collection> , rdf:Bag ;
+	rdfs:label "cluster1" ;
+	rdf:_1 <http://linda-project.eu/pilot-observations/5580> ;
+	rdf:_2 <http://linda-project.eu/pilot-observations/5581> ;
+	rdf:_3 <http://linda-project.eu/pilot-observations/5582> .
+
+
+<http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/2> a <http://localhost:8000/analyticsontology#analytic_input_collection> , rdf:Bag ;
+	rdfs:label "cluster2" ;
+	rdf:_1 <http://linda-project.eu/pilot-observations/5544> ;
+	rdf:_9 <http://linda-project.eu/pilot-observations/5545> ;
+	rdf:_10 <http://linda-project.eu/pilot-observations/5546> .
+
+<http://localhost:8000/analyticsontology/analytic_input_collection/128/V2/3> a <http://localhost:8000/analyticsontology#analytic_input_collection> , rdf:Bag ;
+	rdfs:label "cluster3" ;
+	rdf:_1 <http://linda-project.eu/pilot-observations/5555> ;
+	rdf:_2 <http://linda-project.eu/pilot-observations/5556> ;
+	rdf:_3 <http://linda-project.eu/pilot-observations/5557> ;
+	rdf:_4 <http://linda-project.eu/pilot-observations/5558> ;
+	rdf:_5 <http://linda-project.eu/pilot-observations/5559> ;
+	rdf:_6 <http://linda-project.eu/pilot-observations/5560> ;
+	rdf:_7 <http://linda-project.eu/pilot-observations/5561> ;
+	rdf:_8 <http://linda-project.eu/pilot-observations/5562> ;
+	rdf:_9 <http://linda-project.eu/pilot-observations/5563> ;
+	rdf:_10 <http://linda-project.eu/pilot-observations/5554> .
+
+_:node1a904jvcux1 a foaf:OnlineAccount ;
+	foaf:homepage "http://localhost:8000/" .
+
+<http://localhost:8000/analyticsontology#performance/128/2> a <http://localhost:8000/analyticsontology#performance> ;
+	<http://localhost:8000/analytics128V2Date22122015#dataSizeOfAnalyzedDatainBytes> "203387.0" ;
+	<http://localhost:8000/analytics128V2Date22122015#timeToCreateRDFOutPutInSecs> "3.127" ;
+	<http://localhost:8000/analytics128V2Date22122015#timeToGetDataInSecs> "416.472" ;
+	<http://localhost:8000/analytics128V2Date22122015#timeToRunAnalyticsProcessInSecs> "417.893" .
+
+<http://localhost:8000/analyticsontology#analytic_process/128/2> a <http://localhost:8000/analyticsontology#analytic_process> ;
+	rdfs:comment "Analytics for queryout-of-pocket-health-expenditure - political stability - gov effectiveness - GDPpc with algorithm KMeans" ;
+	rdfs:label "linda analytic process" ;
+	prov:wasAssociatedWith <http://localhost:8000/analyticsontology#Software/LinDa_analytics_software> ;
+	rdfs:subClassOf prov:Activity ;
+	owl:versionInfo "2" ;
+	prov:atTime "2015-12-22T15:55:26.241Z"^^xsd:dateTime ;
+	<http://localhost:8000/analytics128V2Date22122015#algorithm> "KMeans" ;
+	<http://localhost:8000/analytics128V2Date22122015#analyzedField> "clusters-AnalyticsID128-V2"^^xsd:string ;
+	<http://localhost:8000/analytics128V2Date22122015#hasTrainDataset> <http://localhost:8000/query-designer/142> ;
+	<http://localhost:8000/analytics128V2Date22122015#performance> <http://localhost:8000/analyticsontology#performance/128/2> .

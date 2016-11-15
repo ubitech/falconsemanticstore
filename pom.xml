@@ -19,6 +19,8 @@
         <module>rest-api</module>
         <!-- APP module contains the user interface of the application-->
         <module>app</module>
+        <!-- client module invokes the rest api-->
+        <module>client</module>
     </modules>
 
     <properties>

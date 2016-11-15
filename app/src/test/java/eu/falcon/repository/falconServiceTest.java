@@ -44,12 +44,6 @@ public class falconServiceTest {
 
         String serviceURI = "http://192.168.3.15:3030/ds2/query";
 
-//        String query = "SELECT ?AverageEnergy ?date ?AverageEnergy_MeasurementValue\n"
-//                + "WHERE {\n"
-//                + "	?AverageEnergy a <https://w3id.org/saref#AverageEnergy>.\n"
-//                + "		?AverageEnergy <http://www.w3.org/2002/12/cal/ical#dtstart> ?date.\n"
-//                + "		?AverageEnergy <https://w3id.org/saref#MeasurementValue> ?AverageEnergy_MeasurementValue.\n"
-//                + "}";
         String query = "SELECT * WHERE {  ?sub ?pred ?obj} LIMIT 10";
 
         QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI, query);

@@ -1,8 +1,8 @@
 package eu.falcon.semantic.rest.api;
 
-
 import eu.falcon.semantic.rest.response.RestResponse;
 import eu.falcon.semantic.rest.response.BasicResponseCode;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -17,11 +17,13 @@ import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Contains all the rest endpoints regarding with authentication actions.
@@ -30,9 +32,87 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/ontology")
 public class OntologyRestController {
 
-//    @Autowired
-//    private IUserService<User, Long> userService;
+    @Value("${fuseki.triplestore}")
+    private String triplestorURL;
 
+    @Value("${fuseki.dataset}")
+    private String triplestoreDataset;
+
+    ///////////////////////////////////////////////
+    //POST CALLS
+    ///////////////////////////////////////////////
+    @RequestMapping(value = "/query/run", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
+    public RestResponse executeQueryToTriplestorePOST(@RequestBody String tobject) {
+
+        String serviceURI = triplestorURL + "/" + triplestoreDataset + "/query";
+
+        QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI, tobject);
+        ResultSet results = q.execSelect();
+
+        // write to a ByteArrayOutputStream
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        ResultSetFormatter.outputAsJSON(outputStream, results);
+
+        // and turn that into a String
+        String json = new String(outputStream.toByteArray());
+        System.out.println("Results as json mou" + json);
+        System.out.println("Results as string " + ResultSetFormatter.asText(results));
+
+        q.close();
+
+        return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, json);
+    }
+
+    @RequestMapping(value = "/instances/publish", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
+    public RestResponse insertInstancesToTriplestorePOST(@RequestParam("file") MultipartFile initialFile, @RequestParam("format") String format) {
+
+        try {
+            InputStream inputStream = initialFile.getInputStream();
+            String serviceURI = triplestorURL + "/" + triplestoreDataset + "/data";
+
+            DatasetAccessor accessor;
+            accessor = DatasetAccessorFactory.createHTTP(serviceURI);
+            Model m = ModelFactory.createDefaultModel();
+            String base = "http://samle-project.com/";
+            m.read(inputStream, base, format);
+            accessor.add(m);
+            inputStream.close();
+            m.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(OntologyRestController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return new RestResponse(BasicResponseCode.SUCCESS, Message.IMPORTED_INSTANCES, "imported instances" + initialFile.getName());
+    }
+
+    @RequestMapping(value = "/publish", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
+    public RestResponse publishOntologyToTriplestorePOST(@RequestParam("file") MultipartFile initialFile, @RequestParam("format") String format) {
+
+        try {
+            InputStream inputStream = initialFile.getInputStream();
+            String serviceURI = triplestorURL + "/" + triplestoreDataset + "/data";
+
+            DatasetAccessor accessor;
+            accessor = DatasetAccessorFactory.createHTTP(serviceURI);
+            Model m = ModelFactory.createDefaultModel();
+            String base = "http://samle-project.com/";
+            m.read(inputStream, base, format);
+            accessor.add(m);
+            inputStream.close();
+            m.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(OntologyRestController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return new RestResponse(BasicResponseCode.SUCCESS, Message.ONTOLOGY_CREATED, "A new Ontology is inserted" + initialFile.getName());
+    }
+
+    ///////////////////////////////////////////////
+    //GET CALLS
+    ///////////////////////////////////////////////
     @RequestMapping(path = "/publish", method = RequestMethod.GET)
     public RestResponse insertOntologyToTriplestore() {
         File initialFile = null;
@@ -42,7 +122,7 @@ public class OntologyRestController {
             initialFile = new File("/home/eleni/Downloads/iot-energyldao.owl");
             inputStream = new FileInputStream(initialFile);
 
-//triplestore datasource
+            //triplestore datasource
             String serviceURI = "http://192.168.3.15:3030/ds2/data";
 
             DatasetAccessor accessor;
@@ -91,14 +171,8 @@ public class OntologyRestController {
     @RequestMapping(path = "/query/run", method = RequestMethod.GET)
     public RestResponse executeQueryToTriplestore() {
 
-        String serviceURI = "http://192.168.3.15:3030/ds2/data";
+        String serviceURI = "http://192.168.3.15:3030/ds2/query";
 
-//        String query = "SELECT ?AverageEnergy ?date ?AverageEnergy_MeasurementValue\n"
-//                + "WHERE {\n"
-//                + "	?AverageEnergy a <https://w3id.org/saref#AverageEnergy>.\n"
-//                + "		?AverageEnergy <http://www.w3.org/2002/12/cal/ical#dtstart> ?date.\n"
-//                + "		?AverageEnergy <https://w3id.org/saref#MeasurementValue> ?AverageEnergy_MeasurementValue.\n"
-//                + "}";
         String query = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
                 + "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
                 + "SELECT * WHERE {\n"
@@ -126,21 +200,6 @@ public class OntologyRestController {
     }
 
     /**
-     * The exposed endpoint is used via the UI, which attempts to create a new
-     * user to the database.
-     *
-     * @param user A JSON object which will be casted to a User (java) object
-     * @return RestResponse object
-     */
-    @RequestMapping(method = RequestMethod.POST)
-    public RestResponse create(@RequestBody String user
-    ) {
-        
-
-        return new RestResponse(BasicResponseCode.SUCCESS, Message.ONTOLOGY_CREATED);
-    }
-
-    /**
      * Inner class containing all the static messages which will be used in an
      * RestResponse.
      *
@@ -149,5 +208,6 @@ public class OntologyRestController {
 
         final static String ONTOLOGY_CREATED = "Ontology has been created";
         final static String IMPORTED_INSTANCES = "New Instances have been imported";
+        final static String QUERY_EXECUTED = "QUERY is succesfully executed";
     }
 }

@@ -1,0 +1,1442 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#"
+     xml:base="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy"
+     xmlns:iot-energy="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:saref="https://w3id.org/saref"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1"
+     xmlns:ssn="http://purl.oclc.org/NET/ssnx/ssn">
+    <owl:Ontology rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy">
+        <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
+        <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IOT-energy Monitoring Semantic Model</dcterms:title>
+        <dcterms:publisher rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://ubitech.eu/</dcterms:publisher>
+        <dcterms:licence rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This work is licensed under a Creative Commons Attribution License (version 3.0) &lt;http://creativecommons.org/licenses/by/3.0/&gt;</dcterms:licence>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-04-12</dcterms:created>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</owl:versionInfo>
+        <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Smart Appliances REFerence (iot-energy) ontology is a shared model of consensus that facilitates the matching of existing assets (standards/protocols/datamodels/etc.) in the smart appliances domain. The SAREF ontology provides building blocks that allow separation and recombination of different parts of the ontology depending on specific needs. The starting point of SAREF is the concept of device (e.g., a switch). Devices are tangible objects designed to accomplish a particular task in households, common public buildings or offices. In order to accomplish this task, the device performs one or more functions. For example, a washing machine is designed to wash (task) and to accomplish this task it performs the start and stop function. The SAREF ontology offers a lists of basic functions that can be eventually combined in order to have more complex functions in a single device. For example, a switch offers an actuating function of type &apos;switching on/off&apos;. Each function has some associated commands, which can also be picked up as building blocks from a list. For example, the &apos;switching on/off&apos; is associated with the commands &apos;switch on&apos;, &apos;switch off&apos; and &apos;toggle&apos;. Depending on the function(s) it accomplishes, a device can be found in some corresponding states that are also listed as building blocks. When connected to a network, a device offers a service, which  is a representation of a function to a network that makes the function discoverable, registerable and remotely controllable by other devices in the network. A service can represent one or more functions. A service is offered by a device that wants (a certain set of) its function(s) to be discoverable, registerable, remotely controllable by other devices in the network. A service must specify the device that is offering the service, the function(s) to be represented, and the (input and output) parameters necessary to operate the service. A device in the SAREF ontology is also characterized by an energy/power profile that can be used to optimize the energy efficiency in a home or office that are part of a building.</dcterms:description>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/licence -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/licence"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/publisher -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/publisher"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#associatedWith -->
+
+    <owl:ObjectProperty rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#associatedWith"/>
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasActivitiesAt -->
+
+    <owl:ObjectProperty rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasActivitiesAt"/>
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasContract -->
+
+    <owl:ObjectProperty rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasContract"/>
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasQuality -->
+
+    <owl:ObjectProperty rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasQuality"/>
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasSurface -->
+
+    <owl:ObjectProperty rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasSurface"/>
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasTime -->
+
+    <owl:ObjectProperty rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasTime"/>
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasTimezone -->
+
+    <owl:ObjectProperty rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasTimezone"/>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#MeasurementProperty -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#MeasurementProperty"/>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#hasValue -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#hasValue"/>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#isProducedBy -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#isProducedBy"/>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#observedBy -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#observedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isPartOf -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/isPartOf"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#wasDerivedFrom -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#wasDerivedFrom"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#wasGenerateBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#wasGenerateBy"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1#member -->
+
+    <owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1#member"/>
+    
+
+
+    <!-- https://w3id.org/saref#consistsOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#consistsOf"/>
+    
+
+
+    <!-- https://w3id.org/saref#contains -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#contains">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship of containment between entities, for example between a building space and a device or building object.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasCategory -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasCategory"/>
+    
+
+
+    <!-- https://w3id.org/saref#hasState -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasState"/>
+    
+
+
+    <!-- https://w3id.org/saref#isLocatedIn -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#isLocatedIn"/>
+    
+
+
+    <!-- https://w3id.org/saref#isMeasuredIn -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#isMeasuredIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#isUsedFor -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#isUsedFor">
+        <rdfs:comment>A relationship specifying the purpose for which a device is used for (e.g., controlling a Commodity, a Property or a BuildingObject)</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#isUsedFor</rdfs:isDefinedBy>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#isPrediction -->
+
+    <owl:DatatypeProperty rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#isPrediction"/>
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#supportAutomation -->
+
+    <owl:DatatypeProperty rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#supportAutomation"/>
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#withProvidedService -->
+
+    <owl:DatatypeProperty rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#withProvidedService"/>
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#withUtilityOperator -->
+
+    <owl:DatatypeProperty rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#withUtilityOperator"/>
+    
+
+
+    <!-- http://linda-project.eu/ontology/ldao#algorithm -->
+
+    <owl:DatatypeProperty rdf:about="http://linda-project.eu/ontology/ldao#algorithm"/>
+    
+
+
+    <!-- http://linda-project.eu/ontology/ldao#analyzedField -->
+
+    <owl:DatatypeProperty rdf:about="http://linda-project.eu/ontology/ldao#analyzedField"/>
+    
+
+
+    <!-- http://linda-project.eu/ontology/ldao#hasEvaluationDataset -->
+
+    <owl:DatatypeProperty rdf:about="http://linda-project.eu/ontology/ldao#hasEvaluationDataset">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://linda-project.eu/ontology/ldao#hasTrainDataset -->
+
+    <owl:DatatypeProperty rdf:about="http://linda-project.eu/ontology/ldao#hasTrainDataset"/>
+    
+
+
+    <!-- http://linda-project.eu/ontology/ldao#hasVersion -->
+
+    <owl:DatatypeProperty rdf:about="http://linda-project.eu/ontology/ldao#hasVersion"/>
+    
+
+
+    <!-- http://linda-project.eu/ontology/ldao#predictedValue -->
+
+    <owl:DatatypeProperty rdf:about="http://linda-project.eu/ontology/ldao#predictedValue"/>
+    
+
+
+    <!-- http://w3.org/2006/time#hasBeginning -->
+
+    <owl:DatatypeProperty rdf:about="http://w3.org/2006/time#hasBeginning"/>
+    
+
+
+    <!-- http://w3.org/2006/time#hasEnd -->
+
+    <owl:DatatypeProperty rdf:about="http://w3.org/2006/time#hasEnd">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3.org/2006/time#inDateTime -->
+
+    <owl:DatatypeProperty rdf:about="http://w3.org/2006/time#inDateTime"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#atTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/prov#atTime"/>
+    
+
+
+    <!-- https://w3id.org/saref#hasDescription -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#hasDescription"/>
+    
+
+
+    <!-- https://w3id.org/saref#hasModel -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#hasModel"/>
+    
+
+
+    <!-- https://w3id.org/saref#hasSpaceType -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#hasSpaceType"/>
+    
+
+
+    <!-- https://w3id.org/saref#hasValue -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#hasValue"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#Contract -->
+
+    <owl:Class rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#Contract">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isUsedFor"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#Price"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#withProvidedService"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#withUtilityOperator"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#Floor -->
+
+    <owl:Class rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#Floor">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#BuildingSpace"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A building object that can be controlled by devices, for example it can be automatically opened or closed by an actuator.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#Room -->
+
+    <owl:Class rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#Room">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#BuildingSpace"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A building object that can be controlled by devices, for example it can be automatically opened or closed by an actuator.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#Surface -->
+
+    <owl:Class rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#Surface">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#hasValue"/>
+                <owl:allValuesFrom rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#ObservationValue"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isMeasuredIn"/>
+                <owl:allValuesFrom rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#SurfaceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The surface of the Building object in square meters (m2)</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#Surface"/>
+    </owl:Class>
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#SurfaceUnit -->
+
+    <owl:Class rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#SurfaceUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#m2"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://linda-project.eu/ontology/ldao#Analytic_Input_Collection -->
+
+    <owl:Class rdf:about="http://linda-project.eu/ontology/ldao#Analytic_Input_Collection">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An analytic Input Collection is a rdf:Bag that includes an unordered set of Analytic Input Nodes.</rdfs:comment>
+        <rdfs:isDefinedBy>http://linda-project.eu/ontology/ldao#Analytic_Input_Collection</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Analytic Input Collection</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://linda-project.eu/ontology/ldao#Analytic_Input_Node -->
+
+    <owl:Class rdf:about="http://linda-project.eu/ontology/ldao#Analytic_Input_Node">
+        <owl:equivalentClass rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#ObservationValue"/>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/dc/terms/isPartOf"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://linda-project.eu/ontology/ldao#Analytic_Input_Collection"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An analytic input node is whatever observation value takes part of an analytic process as input</rdfs:comment>
+        <rdfs:isDefinedBy>http://linda-project.eu/ontology/ldao#Analytic_Input_Node</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Analytic Input Node</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://linda-project.eu/ontology/ldao#Analytic_Process -->
+
+    <owl:Class rdf:about="http://linda-project.eu/ontology/ldao#Analytic_Process">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://linda-project.eu/ontology/ldao#algorithm"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://linda-project.eu/ontology/ldao#analyzedField"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://linda-project.eu/ontology/ldao#hasEvaluationDataset"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://linda-project.eu/ontology/ldao#hasTrainDataset"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://linda-project.eu/ontology/ldao#hasVersion"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#atTime"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An Analytic process consists of an train dataset that is the input data of the algorithm execution. Eventualy depending on the selected algorithm may consist also of an evaluation dataset. Also optionaly has defined an analyzed field , makes use of a specific algorithm and is executed at a given time on behalf of a third party software</rdfs:comment>
+        <rdfs:isDefinedBy>http://linda-project.eu/ontology/ldao</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Analytic Process</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://linda-project.eu/ontology/ldao#Analytic_Result_Node -->
+
+    <owl:Class rdf:about="http://linda-project.eu/ontology/ldao#Analytic_Result_Node">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
+                <owl:someValuesFrom rdf:resource="http://linda-project.eu/ontology/ldao#Analytic_Input_Node"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
+                <owl:allValuesFrom rdf:resource="http://linda-project.eu/ontology/ldao#Analytic_Input_Node"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasGenerateBy"/>
+                <owl:allValuesFrom rdf:resource="http://linda-project.eu/ontology/ldao#Analytic_Process"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://linda-project.eu/ontology/ldao#predictedValue"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An Analytic Result node is the output of the execution of an Analytic process (is generated by an analytic process)  and is derived from one of many analytic input nodes.</rdfs:comment>
+        <rdfs:isDefinedBy>http://linda-project.eu/ontology/ldao#Analytic_Result_Node</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Analytic Result Node</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#Accuracy -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/ssnx/ssn#Accuracy">
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Quality"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The closeness of agreement between the value of an observation and the true value of the observed quality.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#Frequency -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/ssnx/ssn#Frequency">
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Quality"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The smallest possible time between one observation and the next.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#ObservationValue -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/ssnx/ssn#ObservationValue">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasTime"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#isProducedBy"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#Device"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isMeasuredIn"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#isPrediction"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasValue"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The value of the result of an Observation.  An Observation has a result which is the output of some sensor, the result is an information object that encodes some value for a Feature.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#Precision -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/ssnx/ssn#Precision">
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Quality"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The closeness of agreement between replicate observations on an unchanged or similar quality value: i.e., a measure of a sensor&apos;s ability to consitently reproduce an observation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#Quality -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/ssnx/ssn#Quality">
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#ResponseTime -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/ssnx/ssn#ResponseTime">
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Quality"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The time between a (step) change inthe value of an observed quality and a sensor (possibly with specified error) &apos;settling&apos; on an observed value.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#SensingDevice -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/ssnx/ssn#SensingDevice">
+        <owl:equivalentClass rdf:resource="https://w3id.org/saref#Device"/>
+        <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/DUL.owl#PhysicalObject"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A sensing device is a device that implements sensing.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#Sensitivity -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/ssnx/ssn#Sensitivity">
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Quality"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sensitivity is the quotient of the change in a result of sensor and the corresponding change in a value of a quality being observed.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DUL.owl#PhysicalObject -->
+
+    <owl:Class rdf:about="http://www.loa-cnr.it/ontologies/DUL.owl#PhysicalObject"/>
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#Point -->
+
+    <owl:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#Point">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A point, typically described using a coordinate system relative to Earth, such as WGS84.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Instant -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Instant">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3.org/2006/time#inDateTime"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTimeStamp"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Interval -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Interval">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3.org/2006/time#hasBeginning"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTimeStamp"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3.org/2006/time#hasEnd"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTimeStamp"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TemporalEntity -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalEntity"/>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TemporalUnit -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2006/time#TemporalUnit">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2006/timezone#TimeZone -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/timezone#TimeZone"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Activity -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Activity">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Activity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Entity -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Entity">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The prov:entity property references an prov:Entity which influenced a resource. This property applies to an prov:EntityInfluence, which is given by a subproperty of prov:qualifiedInfluence from the influenced prov:Entity, prov:Activity or prov:Agent.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov#entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Agent -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasActivitiesAt"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/saref#BuildingObject"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Agent class is the class of agents; things that do stuff. A well known sub-class is Person, representing people. Other kinds of agents include Organization and Group.
+
+The Agent class is useful in a few places in FOAF where Person would have been overly specific. For example, the IM chat ID properties such as jabberID are typically associated with people, but sometimes belong to software bots.</rdfs:comment>
+        <rdfs:isDefinedBy>http://xmlns.com/foaf/0.1/Agent</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Group -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Group">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://xmlns.com/foaf/0.1#member"/>
+                <owl:someValuesFrom rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>The Group class represents a collection of individual agents (and may itself play the role of a Agent, ie. something that can perform actions).
+
+This concept is intentionally quite broad, covering informal and ad-hoc groups, long-lived communities, organizational groups within a workplace, etc. Some such groups may have associated characteristics which could be captured in RDF (perhaps a homepage, name, mailing list etc.).
+
+While a Group has the characteristics of a Agent, it is also associated with a number of other Agents (typically people) who constitute the Group. FOAF provides a mechanism, the membershipClass property, which relates a Group to a sub-class of the class Agent who are members of the group. This is a little complicated, but allows us to make group membership rules explicit.
+
+The markup (shown below) for defining a group is both complex and powerful. It allows group membership rules to match against any RDF-describable characteristics of the potential group members. As FOAF and similar vocabularies become more expressive in their ability to describe individuals, the Group mechanism for categorising them into groups also becomes more powerful.</rdfs:comment>
+        <rdfs:isDefinedBy>http://xmlns.com/foaf/0.1/Group</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person">
+        <rdfs:comment>The Person class represents people. Something is a Person if it is a person. We don&apos;t nitpic about whether they&apos;re alive, dead, real, or imaginary. The Person class is a sub-class of the Agent class, since all people are considered &apos;agents&apos; in FOAF.</rdfs:comment>
+        <rdfs:isDefinedBy>http://xmlns.com/foaf/0.1/Person</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Appliance -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Appliance">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Device"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An electrical/mechanical machine that accomplish some household functions, such as cleaning or cooking</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Appliance</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#AverageEnergy -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#AverageEnergy">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Energy"/>
+        <rdfs:comment>A type of Energy</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#AverageEnergy</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#BuildingObject -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#BuildingObject">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An object in the building that can be controlled by devices, such as a door or a window that can be automatically opened or closed by an actuator.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#BuildingSpace -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#BuildingSpace">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasContract"/>
+                <owl:someValuesFrom rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#Contract"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasSurface"/>
+                <owl:allValuesFrom rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#Surface"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasTimezone"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2006/timezone#TimeZone"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#contains"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/saref#BuildingObject"/>
+                            <rdf:Description rdf:about="https://w3id.org/saref#Device"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasSpaceType"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An entity used to define the physical spaces of the building (in accordance with the FIEMSER definition). A building space contains devices or building objects.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Currency -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Currency">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/saref#euro"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Device -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Device">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isUsedFor"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/saref#Property"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#hasQuality"/>
+                <owl:allValuesFrom rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Quality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#consistsOf"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#Device"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasState"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#State"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isLocatedIn"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#BuildingSpace"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isUsedFor"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#EnergyRelated"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#supportAutomation"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasDescription"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasModel"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Door -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Door">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#BuildingObject"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A building object that can be controlled by devices, for example it can be automatically opened or closed by an actuator.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://w3id.org/saref#Door</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Door</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Energy -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Energy">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in an energy unit (Kilowatt_Hour or Watt_hour)</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#Energy</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Energy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#EnergyRelated -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#EnergyRelated">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A category that considers devices based on energy consumption information and profiles to optimize energy efficiency.</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#EnergyRelated</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#EnergyUnit -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#EnergyUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#watt_hour"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The unit of measure for energy</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#EnergyUnit</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Energy Unit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Generator -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Generator">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#EnergyRelated"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#HVAC -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#HVAC">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Device"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Heating, Ventilation and Air Conditioning (HVAC) device that provides indoor environmental comfort</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#HVAC</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HVAC</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#HVACEnergy -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#HVACEnergy">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Energy"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of Energy</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#HVACEnergy</rdfs:isDefinedBy>
+        <rdfs:label>HVACEnergy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Humidity -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Humidity">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in a humidity unit</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#Humidity</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Humidity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Light -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Light">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in a illuminance unit (lux)</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#Light</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Light</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#LightingEnergy -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#LightingEnergy">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Energy"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of Energy</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://w3id.org/saref#LightingEnergy</rdfs:isDefinedBy>
+        <rdfs:label>LightingEnergy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Load -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Load">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#EnergyRelated"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#MultiLevelState -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#MultiLevelState">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#State"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of State</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/saref#MultiLevelState"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Multi level State</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#OffState -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#OffState">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#OnOffState"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The state of a device that is OFF</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/saref#OffState"/>
+        <rdfs:label rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/Off%20State"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#OnOffState -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#OnOffState">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#State"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of State</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/saref#OnOffState"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">On Off State</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#OnState -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#OnState">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#OnOffState"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The state of a device that is ON</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/saref#OnState"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">On State</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Power -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Power">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in a power unit (watt or kilowatt)</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#Power</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Power</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Power_unit -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Power_unit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#killowatt"/>
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#watt"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The unit of measure for power</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#Power_unit</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Power unit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Pressure -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Pressure">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in a pressure unit (bar or pascal)</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#Pressure</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pressure</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Pressure_unit -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Pressure_unit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#bar"/>
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#pascal"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The unit of measure for pressure</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#Pressure_unit</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pressure unit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Price -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Price">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#associatedWith"/>
+                <owl:someValuesFrom rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#ObservationValue"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured using saref:Currency</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#Price</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Price</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Property -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Property">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isMeasuredIn"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasValue"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Anything that can be sensed, measured or controlled in households, common public buildings or offices.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#State -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#State">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The state in which a device can be found, e.g, ON/OFF/STANDBY, or ONLINE/OFFLINE, etc.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/saref#State"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">State</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Storage -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Storage">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#EnergyRelated"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of energy-related device that stores energy</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Temperature -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Temperature">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in a temperature unit (degree_Celsius, degree_Fahrenheit, or degree_kelvin)</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#Temperature</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Temperature</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Temperature_unit -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Temperature_unit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#degree_Celsius"/>
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#degree_Fahrenheit"/>
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#kelvin"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The unit of measure for temperature</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#Temperature_unit</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Temperature unit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Time -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Time">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#consistsOf"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isMeasuredIn"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2006/time#TemporalUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property that allows to specify the time concept in terms of instants or intervals according to the imported W3C Time ontology.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://w3id.org/saref#Time</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Time</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#UnitOfMeasure -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#UnitOfMeasure">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The unit of measure is a standard for measurement of a quantity, such as a Property. For example,  Power is a property and Watt is a unit of power that represents a definite predetermined power: when we say 10 Watt, we actually mean 10 times the definite predetermined power called &quot;watt&quot;. Our definition is based on the definition of unit of measure in the Ontology of units of Measure (OM). We propose here a list of some units of measure that are relevant for the purpose of the Smart Appliances ontology, but this list can be extended.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.wurvoc.org/vocabularies/om-1.6/Unit_of_measure"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unit of Measure</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Window -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Window">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#BuildingObject"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A building object that can be controlled by devices, for example it can be automatically opened or closed by an actuator.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://w3id.org/saref#Window</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Window</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#illuminance_unit -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#illuminance_unit">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The unit of measure for light</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#illuminance_unit</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">illuminance unit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#m2 -->
+
+    <owl:NamedIndividual rdf:about="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#m2">
+        <rdf:type rdf:resource="http://entropy-project.eu/ubitech/ontologies/2016/iot-energy#SurfaceUnit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8#bar -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#bar">
+        <rdf:type rdf:resource="https://w3id.org/saref#Pressure_unit"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The bar is a unit of pressure defined as 100 000 pascal.</rdfs:comment>
+        <rdfs:isDefinedBy>http://www.wurvoc.org/vocabularies/om-1.8/bar</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8#degree_Celsius -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#degree_Celsius">
+        <rdf:type rdf:resource="https://w3id.org/saref#Temperature_unit"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The degree Celsius is a unit of temperature defined as 1 kelvin.</rdfs:comment>
+        <rdfs:isDefinedBy>http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">degree Celcius</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8#degree_Fahrenheit -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#degree_Fahrenheit">
+        <rdf:type rdf:resource="https://w3id.org/saref#Temperature_unit"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The degree Fahrenheit is a unit of temperature defined as 5.555556e-1 kelvin.</rdfs:comment>
+        <rdfs:isDefinedBy>http://www.wurvoc.org/vocabularies/om-1.8/degree_Fahrenheit</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">degree_Fahrenheit</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8#kelvin -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#kelvin">
+        <rdf:type rdf:resource="https://w3id.org/saref#Temperature_unit"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The kelvin is a unit of temperature defined as 1/273.16 of the thermodynamic temperature of the triple point of water.</rdfs:comment>
+        <rdfs:isDefinedBy>http://www.wurvoc.org/vocabularies/om-1.8/kelvin</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kelvin</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8#killowatt -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#killowatt">
+        <rdf:type rdf:resource="https://w3id.org/saref#Power_unit"/>
+        <rdfs:isDefinedBy>http://www.wurvoc.org/vocabularies/om-1.8/kilowatt</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kilowatt</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8#kilowatt_hour -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#kilowatt_hour">
+        <rdf:type rdf:resource="https://w3id.org/saref#EnergyUnit"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The kilowatt hour is a unit of energy equal to 1,000 watt-hours, or 3.6 megajoules.</rdfs:comment>
+        <rdfs:isDefinedBy>http://www.wurvoc.org/vocabularies/om-1.8/kilowatt_hour</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kilowatt hour</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8#lux -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#lux">
+        <rdf:type rdf:resource="https://w3id.org/saref#illuminance_unit"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The lux is a unit of illuminance defined as lumen divided by square metre = candela times steradian divided by square metre.</rdfs:comment>
+        <rdfs:isDefinedBy>http://www.wurvoc.org/vocabularies/om-1.8#lux</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lux</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8#pascal -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#pascal">
+        <rdf:type rdf:resource="https://w3id.org/saref#Pressure_unit"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The bar is a unit of pressure defined as 100 000 pascal.</rdfs:comment>
+        <rdfs:isDefinedBy>http://www.wurvoc.org/vocabularies/om-1.8/pascal</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pascal</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8#watt -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#watt">
+        <rdf:type rdf:resource="https://w3id.org/saref#Power_unit"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The watt is a unit of power defined as joule divided by second = newton times metre divided by second = volt times ampere = kilogram times square metre divided by second to the power 3.</rdfs:comment>
+        <rdfs:isDefinedBy>http://www.wurvoc.org/vocabularies/om-1.8/watt</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">watt</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8#watt_hour -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8#watt_hour">
+        <rdf:type rdf:resource="https://w3id.org/saref#EnergyUnit"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Watt Hor is a unit of energy equivalent to one watt (1 W) of power expended for one hour (1 h) of time. An energy expenditure of 1 Wh represents 3600 joules</rdfs:comment>
+        <rdfs:isDefinedBy>https://w3id.org/saref#watt_hour</rdfs:isDefinedBy>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">watt hour</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#United_States_dollar -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#United_States_dollar">
+        <rdf:type rdf:resource="https://w3id.org/saref#Currency"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#euro -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#euro">
+        <rdf:type rdf:resource="https://w3id.org/saref#Currency"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi -->
+
