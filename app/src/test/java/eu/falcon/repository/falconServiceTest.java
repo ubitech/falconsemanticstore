@@ -38,6 +38,7 @@ public class falconServiceTest {
         qexec.close();
     }
 
+    @Ignore
     @Test
     public void queryTest() {
 
