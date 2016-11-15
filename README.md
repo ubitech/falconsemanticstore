@@ -1,2 +1,2 @@
 # SAMPLE
-> A sample spring-boot application using PART architecture
+> A spring-boot REST API for publishing Ontologies, adding instances and quering a Triplestore
