@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>eu.falcon.semantic</groupId>
+    <artifactId>rest-api</artifactId>
+    <name>rest-api</name>
+    <parent>
+        <groupId>eu.falcon.semantic</groupId>
+        <artifactId>parent</artifactId>
+        <version>0.1.0.BUILD-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+
+        <!-- Thymeleaf template engine for User interface rendering -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${org.springframework.boot}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>eu.falcon.semantic</groupId>
+            <artifactId>util</artifactId>
+            <version>${util.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160212</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Commons codecs-->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>jena-arq</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+<!--        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>jena-core</artifactId>
+            <version>3.1.0</version>
+        </dependency>-->
+
+
+    </dependencies>
+
+</project>
