@@ -91,8 +91,12 @@ public class OntologyRestController {
     public RestResponse publishOntologyToTriplestorePOST(@RequestParam("file") MultipartFile initialFile, @RequestParam("format") String format) {
 
         try {
+            
+            
             InputStream inputStream = initialFile.getInputStream();
             String serviceURI = triplestorURL + "/" + triplestoreDataset + "/data";
+            
+            System.out.println("serviceURI"+serviceURI);
 
             DatasetAccessor accessor;
             accessor = DatasetAccessorFactory.createHTTP(serviceURI);
@@ -100,14 +104,90 @@ public class OntologyRestController {
             String base = "http://samle-project.com/";
             m.read(inputStream, base, format);
             accessor.add(m);
+            //accessor.putModel(m);
             inputStream.close();
-            m.close();
+            m.close();  
 
         } catch (IOException ex) {
             Logger.getLogger(OntologyRestController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return new RestResponse(BasicResponseCode.SUCCESS, Message.ONTOLOGY_CREATED, "A new Ontology is inserted" + initialFile.getName());
+    }
+
+    @RequestMapping(value = "/instance/attributes", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
+    public RestResponse getInstanceAttributes(@RequestBody String instanceURI) {
+
+        String query = "select distinct  ?property  where {\n"
+                + "         ?instance a <" + instanceURI + "> . \n"
+                + "  ?instance ?property ?obj . }";
+
+        String serviceURI = triplestorURL + "/" + triplestoreDataset + "/query";
+
+        QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI, query);
+        ResultSet results = q.execSelect();
+
+        // write to a ByteArrayOutputStream
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        ResultSetFormatter.outputAsJSON(outputStream, results);
+
+        // and turn that into a String
+        String json = new String(outputStream.toByteArray());
+
+        q.close();
+
+        return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, json);
+    }
+
+    @RequestMapping(value = "/class/subclasses", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
+    public RestResponse getClassSubclasses(@RequestBody String classURI) {
+
+        String query = "SELECT distinct ?sub WHERE {\n"
+                + "  ?sub <http://www.w3.org/2000/01/rdf-schema#subClassOf> <" + classURI + ">\n"
+                + "}";
+
+        String serviceURI = triplestorURL + "/" + triplestoreDataset + "/query";
+
+        QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI, query);
+        ResultSet results = q.execSelect();
+
+        // write to a ByteArrayOutputStream
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        ResultSetFormatter.outputAsJSON(outputStream, results);
+
+        // and turn that into a String
+        String json = new String(outputStream.toByteArray());
+
+        q.close();
+
+        return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, json);
+    }
+    
+        @RequestMapping(value = "/class/attributes", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
+    public RestResponse getClassAttributes(@RequestBody String classURI) {
+
+        String query = "SELECT distinct ?sub WHERE {\n"
+                + "  ?sub <http://www.w3.org/2000/01/rdf-schema#subClassOf> <" + classURI + ">\n"
+                + "}";
+
+        String serviceURI = triplestorURL + "/" + triplestoreDataset + "/query";
+
+        QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI, query);
+        ResultSet results = q.execSelect();
+
+        // write to a ByteArrayOutputStream
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        ResultSetFormatter.outputAsJSON(outputStream, results);
+
+        // and turn that into a String
+        String json = new String(outputStream.toByteArray());
+
+        q.close();
+
+        return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, json);
     }
 
     ///////////////////////////////////////////////
@@ -193,12 +273,13 @@ public class OntologyRestController {
         return new RestResponse(BasicResponseCode.SUCCESS, null, "test");
     }
 
-    @RequestMapping(path = "/schema", method = RequestMethod.GET)
-    public RestResponse getOntologySchema() {
-
-        return new RestResponse(BasicResponseCode.SUCCESS, null, "test");
-    }
-
+//    @RequestMapping(path = "/schema", method = RequestMethod.GET)
+//    public RestResponse getInstanceAttributes() {
+//        
+//    
+//
+//        return new RestResponse(BasicResponseCode.SUCCESS, null, "test");
+//    }
     /**
      * Inner class containing all the static messages which will be used in an
      * RestResponse.

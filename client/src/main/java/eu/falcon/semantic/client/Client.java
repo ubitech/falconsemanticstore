@@ -5,6 +5,13 @@
  */
 package eu.falcon.semantic.client;
 
+import org.apache.jena.query.DatasetAccessor;
+import org.apache.jena.query.DatasetAccessorFactory;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.vocabulary.VCARD;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -18,17 +25,58 @@ import org.springframework.web.client.RestTemplate;
  */
 public class Client {
 
+    public static String publishOntology(String fileClassPath, String format) {
+
+        RestTemplate restTemplate = new RestTemplate();
+        LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
+        //final String uri = "http://localhost:8090/api/v1/ontology/publish";
+        final String uri = "http://falconsemanticmanager.euprojects.net/api/v1/ontology/publish";
+
+        map.add("file", new ClassPathResource(fileClassPath));
+        map.add("format", format);
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+
+        HttpEntity<LinkedMultiValueMap<String, Object>> entity = new HttpEntity<LinkedMultiValueMap<String, Object>>(map, headers);
+
+        String result = restTemplate.postForObject(uri, entity, String.class);
+
+        return result;
+
+    }
+
+    public static String addInstances(String fileClassPath, String format) {
+
+        RestTemplate restTemplate = new RestTemplate();
+        LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
+        //final String uri = "http://localhost:8090/api/v1/ontology/instances/publish";
+        final String uri = "http://falconsemanticmanager.euprojects.net/api/v1/ontology/instances/publish";
+
+        map.add("file", new ClassPathResource(fileClassPath));
+        map.add("format", format);
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+
+        HttpEntity<LinkedMultiValueMap<String, Object>> entity = new HttpEntity<LinkedMultiValueMap<String, Object>>(map, headers);
+
+        String result = restTemplate.postForObject(uri, entity, String.class);
+
+        return result;
+
+    }
+
     public static String runQuery(String sparqlQuery) {
 
-        final String uri = "http://localhost:8090/api/v1/ontology/query/run";
+        final String uri = "http://falconsemanticmanager.euprojects.net/api/v1/ontology/query/run";
+        //final String uri = "http://localhost:8090/api/v1/ontology/query/run";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         RestTemplate restTemplate = new RestTemplate();
 
-//        JSONObject queryRequest = new JSONObject();
-//        queryRequest.put("query", sparqlQuery);
         HttpEntity<String> entity = new HttpEntity<>(sparqlQuery, headers);
 
         String result = restTemplate.postForObject(uri, entity, String.class);
@@ -36,44 +84,21 @@ public class Client {
         return result;
     }
 
-    public static String addInstances(String fileClassPath, String format) {
+    public static String getInstanceAttributes(String instanceURI) {
+
+        final String uri = "http://falconsemanticmanager.euprojects.net/api/v1/ontology/instance/attributes";
+        //final String uri = "http://localhost:8090/api/v1/ontology/instance/attributes";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
         RestTemplate restTemplate = new RestTemplate();
-        LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
-        final String uri = "http://localhost:8090/api/v1/ontology/instances/publish";
 
-        map.add("file", new ClassPathResource(fileClassPath));
-        map.add("format", format);
-        HttpHeaders headers = new HttpHeaders();
-
-        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-
-        HttpEntity<LinkedMultiValueMap<String, Object>> entity = new HttpEntity<LinkedMultiValueMap<String, Object>>(map, headers);
+        HttpEntity<String> entity = new HttpEntity<>(instanceURI, headers);
 
         String result = restTemplate.postForObject(uri, entity, String.class);
 
         return result;
-
-    }
-
-    public static String publishOntology(String fileClassPath, String format) {
-
-        RestTemplate restTemplate = new RestTemplate();
-        LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
-        final String uri = "http://localhost:8090/api/v1/ontology/publish";
-
-        map.add("file", new ClassPathResource(fileClassPath));
-        map.add("format", format);
-        HttpHeaders headers = new HttpHeaders();
-
-        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-
-        HttpEntity<LinkedMultiValueMap<String, Object>> entity = new HttpEntity<LinkedMultiValueMap<String, Object>>(map, headers);
-
-        String result = restTemplate.postForObject(uri, entity, String.class);
-
-        return result;
-
     }
 
     public static void main(String[] args) {
@@ -96,6 +121,9 @@ public class Client {
         String queryResult = runQuery(sparqlQuery);
         System.out.println("queryResult " + queryResult);
 
+        //get Instance Attributes
+        String instanceAttributes = getInstanceAttributes("http://localhost:8000/analyticsontology#analytic_process");
+        System.out.println("instanceAttributes " + instanceAttributes);
     }
 
 }

@@ -1,0 +1,3200 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/saref#"
+     xml:base="https://w3id.org/saref"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:saref="https://w3id.org/saref#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:time="http://www.w3.org/2006/time#"
+     xmlns:om="http://www.wurvoc.org/vocabularies/om-1.8/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="https://w3id.org/saref">
+        <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
+        <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-04-01</dcterms:issued>
+        <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Smart Appliances REFerence (SAREF) ontology is a shared model of consensus that facilitates the matching of existing assets (standards/protocols/datamodels/etc.) in the smart appliances domain. The SAREF ontology provides building blocks that allow separation and recombination of different parts of the ontology depending on specific needs. The starting point of SAREF is the concept of device (e.g., a switch). Devices are tangible objects designed to accomplish a particular task in households, common public buildings or offices. In order to accomplish this task, the device performs one or more functions. For example, a washing machine is designed to wash (task) and to accomplish this task it performs the start and stop function. The SAREF ontology offers a lists of basic functions that can be eventually combined in order to have more complex functions in a single device. For example, a switch offers an actuating function of type switching on/off. Each function has some associated commands, which can also be picked up as building blocks from a list. For example, the switching on/off is associated with the commands switch on, switch off and toggle. Depending on the function(s) it accomplishes, a device can be found in some corresponding states that are also listed as building blocks. When connected to a network, a device offers a service, which  is a representation of a function to a network that makes the function discoverable, registerable and remotely controllable by other devices in the network. A service can represent one or more functions. A service is offered by a device that wants (a certain set of) its function(s) to be discoverable, registerable, remotely controllable by other devices in the network. A service must specify the device that is offering the service, the function(s) to be represented, and the (input and output) parameters necessary to operate the service. A device in the SAREF ontology is also characterized by an energy/power profile that can be used to optimize the energy efficiency in a home or office that are part of a building.</dcterms:description>
+        <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SAREF: the Smart Appliances REFerence ontology</dcterms:title>
+        <dcterms:publisher rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TNO &lt;https://www.tno.nl/nl/&gt;</dcterms:publisher>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-02-10</dcterms:created>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</owl:versionInfo>
+        <dcterms:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Laura Daniele &lt;mailto:laura.daniele@tno.nl&gt;</dcterms:creator>
+        <dcterms:license rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This work is licensed under a Creative Commons Attribution License (version 3.0) &lt;http://creativecommons.org/licenses/by/3.0/&gt;</dcterms:license>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#location -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#location">
+        <rdfs:range rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/singular_unit -->
+
+    <owl:ObjectProperty rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/singular_unit">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">singular unit</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#IsUsedFor -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#IsUsedFor">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship specifying the purpose for which a device is used for (e.g., controlling a Commodity, a Property or a BuildingObject)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Is used for</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#accomplishes -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#accomplishes">
+        <owl:inverseOf rdf:resource="https://w3id.org/saref#isAccomplishedBy"/>
+        <rdfs:range rdf:resource="https://w3id.org/saref#Task"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship between a certain entity (e.g., a device) and the task it accomplishes</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">accomplishes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#actsUpon -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#actsUpon">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship between a command and a state</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">acts upon</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#consistsOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#consistsOf">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship indicating a composite entity that consists of other entities (e.g., a temperature/humidity sensor that consists of a temperature sensor and a humidity sensor)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">consists of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#contains -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#contains">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship of containment between entities, for example between a building space and a device or building object.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">contains</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasCategory -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasCategory">
+        <owl:inverseOf rdf:resource="https://w3id.org/saref#isCategoryOf"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship between an entity (such as device or function) and a corresponding category</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has category</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasCommand -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasCommand">
+        <owl:inverseOf rdf:resource="https://w3id.org/saref#isCommandOf"/>
+        <rdfs:range rdf:resource="https://w3id.org/saref#Command"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship between an entity (such as a function) and a command</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has command</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasConsumption -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasConsumption">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship identifying the type of consumption of an entity</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has consumption</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasFunction -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasFunction">
+        <rdfs:range rdf:resource="https://w3id.org/saref#Function"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship identifying the type of function of a device</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has function</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasInputParameter -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasInputParameter">
+        <rdfs:domain rdf:resource="https://w3id.org/saref#Service"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship identifying the input parameter of a service</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has input parameter</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasMeterReadingTime -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasMeterReadingTime">
+        <rdfs:range rdf:resource="https://w3id.org/saref#Time"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship between a metering function and time identifying the reading time of a measurement</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has meter reading time</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasMeterReadingValue -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasMeterReadingValue">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship between a metering function and a value identifying the reading value of a measurement</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has meter reading</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasOutputParameter -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasOutputParameter">
+        <rdfs:domain rdf:resource="https://w3id.org/saref#Service"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship identifying the output parameter of a service</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has output parameter</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasPrice -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasPrice">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationships indentifying the price associated to an entity</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has price</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasProduction -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasProduction">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship identifying the type of production of an entity</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has production</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasProfile -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasProfile">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship associating a profile to a certain entity (e.g., a device)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has profile</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasSensingRange -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasSensingRange">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship between a sensing function and a property identifying the range of a sensor detection</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has sensing range </rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasSensingTime -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasSensingTime">
+        <rdfs:range rdf:resource="https://w3id.org/saref#Time"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship between a sensing function and time identifying the time of a sensor detection</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has sensing time</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasSingularUnit -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasSingularUnit">
+        <rdfs:subPropertyOf rdf:resource="http://www.wurvoc.org/vocabularies/om-1.8/singular_unit"/>
+        <rdfs:domain rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+        <rdfs:range rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship defining a singular unit as a sub-property of the om:singular_unit property</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has singular unit</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasState -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasState">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship identifying the type of state of a device</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has state</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasThreshold -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasThreshold">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship associated with an event function to notify that a certain threshold value has been exceeded</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has threshold</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasTime -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasTime">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship to associate time information to an entity</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has time</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasTypicalConsumption -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#hasTypicalConsumption">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship identifying the typical (energy or power) consumption of a device</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has typical consumption</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#isAccomplishedBy -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#isAccomplishedBy">
+        <rdfs:domain rdf:resource="https://w3id.org/saref#Task"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship indentifying the task accomplished by a certain entity (e.g., a device)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">is accomplished by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#isCategoryOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#isCategoryOf">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship between a category and an entity (such as device or function)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">is category of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#isCommandOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#isCommandOf">
+        <rdfs:domain rdf:resource="https://w3id.org/saref#Command"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship between a command and a function.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">is command of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#isLocatedIn -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#isLocatedIn">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship between a device and the building space in which it is located. </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">is located in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#isMeasuredIn -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#isMeasuredIn">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship identifying the unit of measure used for a certain entity.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">is measured in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#isOfferedBy -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#isOfferedBy">
+        <owl:inverseOf rdf:resource="https://w3id.org/saref#offers"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship between a service and a device that offers the service</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">is offered by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#offers -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#offers">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship between a device and a service</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">offers</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/saref#represents -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/saref#represents">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship between a service and a function.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">represents</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/saref#hasDescription -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#hasDescription">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship providing a description of an entity (e.g., device)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has description</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasManufacturer -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#hasManufacturer">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship identifying the manufacturer of an entity (e.g., device)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has manufacturer</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasMeterReadingType -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#hasMeterReadingType">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship identifying the reading type of a measurement (i.e., Water, Gas, Pressure , Energy , Power or Other)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has meter reading type</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasModel -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#hasModel">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship identifying the model of an entity (e.g., device)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has model</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasName -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#hasName">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship providing the name of an entity (e.g., device)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasSensorType -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#hasSensorType">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship identifying the sensing type of a sensor detection (i.e., emperature, Occupancy, Humidity, Motion , Smoke, Pressure or Other) </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has sensor type</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasSpaceType -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#hasSpaceType">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship that specifies the type of a building space</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has space type</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasTask -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#hasTask">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship identifying the type of task for a certain profile of a device. It is used to identify recurring tasks, for example, specific types of washing cycles with certain parameters. </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has task</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/saref#hasValue -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#hasValue">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship defining the value of a certain property, e.g., energy or power</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/saref#isFlexible -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#isFlexible">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship stating whether a profile of a certain device has the flexibility to be stopped once it started</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">is flexible</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/saref#isInterruptionPossible -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/saref#isInterruptionPossible">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relationship stating whether a profile of a certain device can be interrupted once it started</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">is interruption possible</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#Resource -->
+
+    <owl:Class rdf:about="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#Point -->
+
+    <owl:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#Point">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+        <rdfs:comment> 
+Uniquely identified by lat/long/alt. i.e.
+
+spaciallyIntersects(P1, P2) :- lat(P1, LAT), long(P1, LONG), alt(P1, ALT),
+  lat(P2, LAT), long(P2, LONG), alt(P2, ALT).
+
+sameThing(P1, P2) :- type(P1, Point), type(P2, Point), spaciallyIntersects(P1, P2).
+  </rdfs:comment>
+        <rdfs:comment>A point, typically described using a coordinate system relative to Earth, such as WGS84.
+  </rdfs:comment>
+        <rdfs:label>point</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing -->
+
+    <owl:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdfs:comment>Anything with spatial extent, i.e. size, shape, or position.
+ e.g. people, places, bowling balls, as well as abstract areas like cubes.
+</rdfs:comment>
+        <rdfs:label>SpatialThing</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#DateTimeDescription -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2006/time#DateTimeDescription">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2006/time#DayOfWeek -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2006/time#DayOfWeek">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2006/time#DurationDescription -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2006/time#DurationDescription">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TemporalEntity -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2006/time#TemporalEntity">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2006/time#TemporalUnit -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2006/time#TemporalUnit">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The unit of measure for time</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2006/timezone#TimeZone -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2006/timezone#TimeZone">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://w3id.org/saref#ActuatingFunction -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#ActuatingFunction">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Function"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A function that allows to transmit data to actuators, such as level settings (e.g., temperature) or binary switching (e.g., open/close, on/off)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Actuating function</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Actuator -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Actuator">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#FunctionRelated"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Appliance -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Appliance">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#FunctionRelated"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#AverageEnergy -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#AverageEnergy">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Energy"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of Energy</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Average energy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#BuildingObject -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#BuildingObject">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An object in the building that can be controlled by devices, such as a door or a window that can be automatically opened or closed by an actuator. </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Building object</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#BuildingRelated -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#BuildingRelated">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#DeviceCategory"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A category that includes devices as described by building related data models, such as IFC and FIEMSER </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Building related</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#BuildingSpace -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#BuildingSpace">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#contains"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/saref#BuildingObject"/>
+                            <rdf:Description rdf:about="https://w3id.org/saref#Device"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasSpaceType"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An entity used to define the physical spaces of the building (in accordance with the FIEMSER definition). A building space contains devices or building objects.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Building space</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Cleaning -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Cleaning">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Task"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#CloseCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#CloseCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Command"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#actsUpon"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#OpenCloseState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/saref#OpenCommand"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#CloseState -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#CloseState">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#OpenCloseState"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Coal -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Coal">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Commodity"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Command -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Command">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#actsUpon"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#State"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isCommandOf"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/saref#Function"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A directive that a device must support to perform a certain function. A command may act upon a state, but does not necessarily act upon a state. For example, the ON command acts upon the ON/OFF state, but the GET command does not act upon any state, it simply gives a directive to retrieve a certain value.   </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Command</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Commodity -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Commodity">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isMeasuredIn"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A marketable item for which there is demand, but which is supplied without qualitative differentiation across a market. SAREF refers to energy commodities such as electricity, gas, coal and oil. </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Commodity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Currency -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Currency">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/United_States_dollar"/>
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/euro"/>
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/pound_sterling"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The unit of measure for price</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Currency</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Device -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Device">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#IsUsedFor"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/saref#BuildingObject"/>
+                            <rdf:Description rdf:about="https://w3id.org/saref#Commodity"/>
+                            <rdf:Description rdf:about="https://w3id.org/saref#Property"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#consistsOf"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#Device"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasCategory"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#DeviceCategory"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasProfile"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#Profile"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasState"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#State"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasTypicalConsumption"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/saref#Energy"/>
+                            <rdf:Description rdf:about="https://w3id.org/saref#Power"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isLocatedIn"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#BuildingSpace"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#offers"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#Service"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#accomplishes"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/saref#Task"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasFunction"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/saref#Function"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasManufacturer"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasModel"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasDescription"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A tangible object designed to accomplish a particular task in households, common public buildings or offices. In order to accomplish this task, the device performs one or more functions. For example, a washing machine is designed to wash (task) and to accomplish this task it performs the start and stop function.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Device</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#DeviceCategory -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#DeviceCategory">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Categories of devices that reflects different points of view, for example, the point of view of the user of the device vs. the device&apos;s manufacturer, or the domain in which the device is used (e.g., smart appliances vs. building domain vs. smart grid domain), etc.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Device category</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Door -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Door">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#BuildingObject"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#DoorSwitch -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#DoorSwitch">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Drying -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Drying">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Task"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Electricity -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Electricity">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Commodity"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Energy -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Energy">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isMeasuredIn"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#EnergyUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasValue"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#EnergyMeter -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#EnergyMeter">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#EnergyRelated -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#EnergyRelated">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#DeviceCategory"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A category that considers devices based on energy consumption information and profiles to optimize energy efficiency.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Energy related</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#EnergyUnit -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#EnergyUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/kilowatt_hour"/>
+                    <rdf:Description rdf:about="https://w3id.org/saref#watt_hour"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The unit of measure for energy</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Energy unit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Entertainment -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Entertainment">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Task"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#EventFunction -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#EventFunction">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Function"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasThreshold"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Function -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Function">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasCategory"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#FunctionCategory"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasCommand"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/saref#Command"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The functionality necessary to accomplish the task for which a Device is designed. A device can be designed to perform more than one function. </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Function</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#FunctionCategory -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#FunctionCategory">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Categories of functions that reflects different points of view, for example, considering the specific application area for which a function can be used (e.g., light, temperature, motion, heat, power, etc.), or the capability that a function can support (e.g., receive, reply, notify, etc.), and so forth. </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Function category</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#FunctionRelated -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#FunctionRelated">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#DeviceCategory"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A category that considers devices, sensors and their specification in terms of functions, states and services</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Function related</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Gas -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Gas">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Commodity"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Generator -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Generator">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#EnergyRelated"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#GetCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#GetCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Command"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of command</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Get command</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#GetCurrentMeterValueCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#GetCurrentMeterValueCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#GetCommand"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#GetMeterDataCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#GetMeterDataCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#GetCommand"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#GetMeterHistoryCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#GetMeterHistoryCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#GetCommand"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#GetSensingDataCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#GetSensingDataCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#GetCommand"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#HVAC -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#HVAC">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#FunctionRelated"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#HVACEnergy -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#HVACEnergy">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Energy"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of Energy</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HVACEnergy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#HotWaterEnergy -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#HotWaterEnergy">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Energy"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of Energy</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot water energy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Humidity -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Humidity">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#IlluminanceUnit -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#IlluminanceUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/lux"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The unit of measure for light</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Illuminance unit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#LevelControlFunction -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#LevelControlFunction">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#ActuatingFunction"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Light -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Light">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isMeasuredIn"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#IlluminanceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#LightSwitch -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#LightSwitch">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Lighting -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Lighting">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#FunctionRelated"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#LightingEnergy -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#LightingEnergy">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Energy"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of Energy</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lighting energy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Load -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Load">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#EnergyRelated"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#MaximumEnergy -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#MaximumEnergy">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Energy"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of Energy</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum energy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Meter -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Meter">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Device"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#FunctionRelated"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#MeteringFunction -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#MeteringFunction">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Function"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasMeterReadingValue"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/saref#Commodity"/>
+                            <rdf:Description rdf:about="https://w3id.org/saref#Property"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasMeterReadingTime"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/saref#Time"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasMeterReadingType"/>
+                <owl:allValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:oneOf>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Energy</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gas</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Other</rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Power</rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pressure</rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Water</rdf:first>
+                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </owl:oneOf>
+                    </rdfs:Datatype>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#MicroRenewable -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#MicroRenewable">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#FunctionRelated"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#MinimunEnergy -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#MinimunEnergy">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Energy"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of Energy</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Minimun energy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Motion -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Motion">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#MultiLevelState -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#MultiLevelState">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#State"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of state</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Multi level state</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Multimedia -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Multimedia">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#FunctionRelated"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Network -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Network">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#FunctionRelated"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#NotifyCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#NotifyCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Command"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Occupancy -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Occupancy">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#OffCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#OffCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Command"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#actsUpon"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#OnOffState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/saref#OnCommand"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#OffState -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#OffState">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#OnOffState"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#OnCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#OnCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Command"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#actsUpon"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#OnOffState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#OnOffFunction -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#OnOffFunction">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#ActuatingFunction"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#OnOffState -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#OnOffState">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#State"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of state</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">On off state</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#OnState -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#OnState">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#OnOffState"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#OpenCloseFunction -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#OpenCloseFunction">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#ActuatingFunction"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#OpenCloseState -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#OpenCloseState">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#State"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of state</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Open close state</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#OpenCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#OpenCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Command"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#actsUpon"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#OpenCloseState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#OpenState -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#OpenState">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#OpenCloseState"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#PauseCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#PauseCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Command"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Power -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Power">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isMeasuredIn"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#PowerUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasValue"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#PowerUnit -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#PowerUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/kilowatt"/>
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/watt"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The unit of measure for power</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Power unit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Pressure -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Pressure">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isMeasuredIn"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#PressureUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#PressureUnit -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#PressureUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/bar"/>
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/pascal"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The unit of measure for pressure</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pressure unit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Price -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Price">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isMeasuredIn"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#Currency"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasValue"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Profile -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Profile">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#consistsOf"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#Profile"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasConsumption"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/saref#Energy"/>
+                            <rdf:Description rdf:about="https://w3id.org/saref#Power"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasPrice"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#Price"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasProduction"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/saref#Energy"/>
+                            <rdf:Description rdf:about="https://w3id.org/saref#Power"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasTime"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#Time"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isFlexible"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isInterruptionPossible"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasTask"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A specification of the production and consumption of a device for the purpose to optimize the energy efficiency in the home or office in which the device is located. The saref:Profile class allows to describe the energy (or power) production and consumption of a certain device using the saref: hasProduction and saref:hasConsumption properties. This production and consumption can be calculated over a time span (the saref:hasTime property) and, eventually, associated to some costs (the saref:hasPrice property). </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Profile</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Property -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Property">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isMeasuredIn"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasValue"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Anything that can be sensed, measured or controlled in households, common public buildings or offices.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Property</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Safety -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Safety">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Task"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#SensingFunction -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#SensingFunction">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Function"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasSensingRange"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/saref#Property"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasSensingTime"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/saref#Time"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasSensorType"/>
+                <owl:allValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:oneOf>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Humidity</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Motion</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Occupancy</rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Other</rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pressure</rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Smoke</rdf:first>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Temperature</rdf:first>
+                                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </owl:oneOf>
+                    </rdfs:Datatype>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Sensor -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Sensor">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Device"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#FunctionRelated"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Service -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Service">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasInputParameter"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/saref#Property"/>
+                            <rdf:Description rdf:about="https://w3id.org/saref#State"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasOutputParameter"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/saref#Property"/>
+                            <rdf:Description rdf:about="https://w3id.org/saref#State"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isOfferedBy"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#Device"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#represents"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#Function"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isOfferedBy"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/saref#Device"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#represents"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/saref#Function"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A service is a representation of a function to a network that makes the function discoverable, registerable, remotely controllable by other devices in the network. A service can represent one or more functions. A Service is offered by a device that wants (a certain set of) its function(s) to be discoverable, registerable, remotely controllable by other devices in the network. A Service must specify the device that is offering the service, the function(s) to be represented, and the (input and output) parameters necessary to operate the service. </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Service</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#SetAbsoluteLevelCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#SetAbsoluteLevelCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#SetLevelCommand"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#SetLevelCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#SetLevelCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Command"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#actsUpon"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#MultiLevelState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of command</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Set level command</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#SetRelativeLevelCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#SetRelativeLevelCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#SetLevelCommand"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Smoke -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Smoke">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#SmokeSensor -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#SmokeSensor">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#StartCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#StartCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Command"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#actsUpon"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#StartStopState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/saref#StopCommand"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#StartState -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#StartState">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#StartStopState"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#StartStopFunction -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#StartStopFunction">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#ActuatingFunction"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#StartStopState -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#StartStopState">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#State"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of state</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Start stop state</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#State -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#State">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The state in which a device can be found, e.g, ON/OFF/STANDBY, or ONLINE/OFFLINE, etc. </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">State</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#StepDownCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#StepDownCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Command"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#actsUpon"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#MultiLevelState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/saref#StepUpCommand"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#StepUpCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#StepUpCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Command"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#actsUpon"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#MultiLevelState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#StopCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#StopCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Command"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#actsUpon"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#StartStopState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#StopState -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#StopState">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#StartStopState"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Storage -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Storage">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#EnergyRelated"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Switch -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Switch">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#SwitchOnService -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#SwitchOnService">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Service"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Task -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Task">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isAccomplishedBy"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/saref#Device"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The goal for which a device is designed (from a user perspective). For example, a washing machine is designed for the task of washing. </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Task</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Temperature -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Temperature">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isMeasuredIn"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/saref#TemperatureUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#hasValue"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#TemperatureSensor -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#TemperatureSensor">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#TemperatureUnit -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#TemperatureUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius"/>
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/degree_Fahrenheit"/>
+                    <rdf:Description rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/kelvin"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#UnitOfMeasure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The unit of measure for temperature</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Temperature unit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Time -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Time">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Property"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#consistsOf"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/saref#isMeasuredIn"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2006/time#TemporalUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property that allows to specify the time concept in terms of instants or intervals according to the imported W3C Time ontology. </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Time</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#ToggleCommand -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#ToggleCommand">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Command"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#TotalEnergy -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#TotalEnergy">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Energy"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of Energy</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Total energy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#UnitOfMeasure -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#UnitOfMeasure">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The unit of measure is a standard for measurement of a quantity, such as a Property. For example,  Power is a property and Watt is a unit of power that represents a definite predetermined power: when we say 10 Watt, we actually mean 10 times the definite predetermined power called &quot;watt&quot;. Our definition is based on the definition of unit of measure in the Ontology of units of Measure (OM). We propose here a list of some units of measure that are relevant for the purpose of the Smart Appliances ontology, but this list can be extended.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.wurvoc.org/vocabularies/om-1.6/Unit_of_measure"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unit of measure</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Washing -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Washing">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Task"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#WashingMachine -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#WashingMachine">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Water -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Water">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Commodity"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#WellBeing -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#WellBeing">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#Task"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/saref#Window -->
+
+    <owl:Class rdf:about="https://w3id.org/saref#Window">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/saref#BuildingObject"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/United_States_dollar -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/United_States_dollar">
+        <rdf:type rdf:resource="https://w3id.org/saref#Currency"/>
+        <rdfs:label xml:lang="en">United States dollar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/bar -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/bar">
+        <rdf:type rdf:resource="https://w3id.org/saref#PressureUnit"/>
+        <rdfs:comment xml:lang="en">The bar is a unit of pressure defined as 100 000 pascal.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius">
+        <rdf:type rdf:resource="https://w3id.org/saref#TemperatureUnit"/>
+        <rdfs:comment xml:lang="en">The degree Celsius is a unit of temperature defined as 1 kelvin.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">degree Celsius</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">degree celsius </rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/degree_Fahrenheit -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/degree_Fahrenheit">
+        <rdf:type rdf:resource="https://w3id.org/saref#TemperatureUnit"/>
+        <rdfs:comment xml:lang="en">The degree Fahrenheit is a unit of temperature defined as 5.555556e-1 kelvin.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">degree Fahrenheit</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/euro -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/euro">
+        <rdf:type rdf:resource="https://w3id.org/saref#Currency"/>
+        <rdfs:label xml:lang="en">euro</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/kelvin -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/kelvin">
+        <rdf:type rdf:resource="https://w3id.org/saref#TemperatureUnit"/>
+        <rdfs:comment xml:lang="en">The kelvin is a unit of temperature defined as 1/273.16 of the thermodynamic temperature of the triple point of water.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kelvin</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/kilowatt -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/kilowatt">
+        <rdf:type rdf:resource="https://w3id.org/saref#PowerUnit"/>
+        <hasSingularUnit rdf:resource="http://www.wurvoc.org/vocabularies/om-1.8/watt"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kilowatt</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/kilowatt_hour -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/kilowatt_hour">
+        <rdf:type rdf:resource="https://w3id.org/saref#EnergyUnit"/>
+        <hasSingularUnit rdf:resource="https://w3id.org/saref#watt_hour"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The kilowatt hour is a unit of energy equal to 1,000 watt-hours, or 3.6 megajoules.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kilowatt hour</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/lux -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/lux">
+        <rdf:type rdf:resource="https://w3id.org/saref#IlluminanceUnit"/>
+        <rdfs:comment xml:lang="en">The lux is a unit of illuminance defined as lumen divided by square metre = candela times steradian divided by square metre.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lux</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/pascal -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/pascal">
+        <rdf:type rdf:resource="https://w3id.org/saref#PressureUnit"/>
+        <rdfs:comment xml:lang="en">The pascal is a unit of pressure and stress defined as newton divided by square metre = joule divided by cubic metre = kilogram divided by metre second squared.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pascal</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/pound_sterling -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/pound_sterling">
+        <rdf:type rdf:resource="https://w3id.org/saref#Currency"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Great Britain pound sterling</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/watt -->
+
+    <owl:NamedIndividual rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/watt">
+        <rdf:type rdf:resource="https://w3id.org/saref#PowerUnit"/>
+        <rdfs:comment xml:lang="en">The watt is a unit of power defined as joule divided by second = newton times metre divided by second = volt times ampere = kilogram times square metre divided by second to the power 3.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">watt</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Actuator -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Actuator">
+        <rdf:type rdf:resource="https://w3id.org/saref#Actuator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Appliance -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Appliance">
+        <rdf:type rdf:resource="https://w3id.org/saref#Appliance"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Cleaning -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Cleaning">
+        <rdf:type rdf:resource="https://w3id.org/saref#Cleaning"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#CloseCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#CloseCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#CloseCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#CloseState -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#CloseState">
+        <rdf:type rdf:resource="https://w3id.org/saref#CloseState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Coal -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Coal">
+        <rdf:type rdf:resource="https://w3id.org/saref#Coal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Door -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Door">
+        <rdf:type rdf:resource="https://w3id.org/saref#Door"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#DoorSwitch -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#DoorSwitch">
+        <rdf:type rdf:resource="https://w3id.org/saref#DoorSwitch"/>
+        <IsUsedFor rdf:resource="https://w3id.org/saref#Door"/>
+        <consistsOf rdf:resource="https://w3id.org/saref#Switch"/>
+        <hasCategory rdf:resource="https://w3id.org/saref#Actuator"/>
+        <hasFunction rdf:resource="https://w3id.org/saref#OpenCloseFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Drying -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Drying">
+        <rdf:type rdf:resource="https://w3id.org/saref#Drying"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Electricity -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Electricity">
+        <rdf:type rdf:resource="https://w3id.org/saref#Electricity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Energy -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Energy">
+        <rdf:type rdf:resource="https://w3id.org/saref#Energy"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#EnergyMeter -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#EnergyMeter">
+        <rdf:type rdf:resource="https://w3id.org/saref#EnergyMeter"/>
+        <IsUsedFor rdf:resource="https://w3id.org/saref#Energy"/>
+        <consistsOf rdf:resource="https://w3id.org/saref#Meter"/>
+        <hasCategory rdf:resource="https://w3id.org/saref#Meter"/>
+        <hasFunction rdf:resource="https://w3id.org/saref#MeteringFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Entertainment -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Entertainment">
+        <rdf:type rdf:resource="https://w3id.org/saref#Entertainment"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#EventFunction -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#EventFunction">
+        <rdf:type rdf:resource="https://w3id.org/saref#EventFunction"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#NotifyCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Gas -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Gas">
+        <rdf:type rdf:resource="https://w3id.org/saref#Gas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Generator -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Generator">
+        <rdf:type rdf:resource="https://w3id.org/saref#Generator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#GetCurrentMeterValueCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#GetCurrentMeterValueCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#GetCurrentMeterValueCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#GetMeterDataCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#GetMeterDataCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#GetMeterDataCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#GetMeterHistoryCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#GetMeterHistoryCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#GetMeterHistoryCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#GetSensingDataCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#GetSensingDataCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#GetSensingDataCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#HVAC -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#HVAC">
+        <rdf:type rdf:resource="https://w3id.org/saref#HVAC"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Humidity -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Humidity">
+        <rdf:type rdf:resource="https://w3id.org/saref#Humidity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#LevelControlFunction -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#LevelControlFunction">
+        <rdf:type rdf:resource="https://w3id.org/saref#LevelControlFunction"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#SetAbsoluteLevelCommand"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#SetRelativeLevelCommand"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#StepDownCommand"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#StepUpCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Light -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Light">
+        <rdf:type rdf:resource="https://w3id.org/saref#Light"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#LightSwitch -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#LightSwitch">
+        <rdf:type rdf:resource="https://w3id.org/saref#LightSwitch"/>
+        <IsUsedFor rdf:resource="https://w3id.org/saref#Light"/>
+        <consistsOf rdf:resource="https://w3id.org/saref#Switch"/>
+        <hasCategory rdf:resource="https://w3id.org/saref#Actuator"/>
+        <hasFunction rdf:resource="https://w3id.org/saref#OnOffFunction"/>
+        <offers rdf:resource="https://w3id.org/saref#SwitchOnService"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Lighting -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Lighting">
+        <rdf:type rdf:resource="https://w3id.org/saref#Lighting"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Load -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Load">
+        <rdf:type rdf:resource="https://w3id.org/saref#Load"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Meter -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Meter">
+        <rdf:type rdf:resource="https://w3id.org/saref#Meter"/>
+        <hasCategory rdf:resource="https://w3id.org/saref#Meter"/>
+        <hasFunction rdf:resource="https://w3id.org/saref#MeteringFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#MeteringFunction -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#MeteringFunction">
+        <rdf:type rdf:resource="https://w3id.org/saref#MeteringFunction"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#GetCurrentMeterValueCommand"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#GetMeterDataCommand"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#GetMeterHistoryCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#MicroRenewable -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#MicroRenewable">
+        <rdf:type rdf:resource="https://w3id.org/saref#MicroRenewable"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Motion -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Motion">
+        <rdf:type rdf:resource="https://w3id.org/saref#Motion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Multimedia -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Multimedia">
+        <rdf:type rdf:resource="https://w3id.org/saref#Multimedia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Network -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Network">
+        <rdf:type rdf:resource="https://w3id.org/saref#Network"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#NotifyCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#NotifyCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#NotifyCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Occupancy -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Occupancy">
+        <rdf:type rdf:resource="https://w3id.org/saref#Occupancy"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#OffCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#OffCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#OffCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#OffState -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#OffState">
+        <rdf:type rdf:resource="https://w3id.org/saref#OffState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#OnCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#OnCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#OnCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#OnOffFunction -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#OnOffFunction">
+        <rdf:type rdf:resource="https://w3id.org/saref#OnOffFunction"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#OffCommand"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#OnCommand"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#ToggleCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#OnState -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#OnState">
+        <rdf:type rdf:resource="https://w3id.org/saref#OnState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#OpenCloseFunction -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#OpenCloseFunction">
+        <rdf:type rdf:resource="https://w3id.org/saref#OpenCloseFunction"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#CloseCommand"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#OpenCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#OpenCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#OpenCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#OpenCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#OpenState -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#OpenState">
+        <rdf:type rdf:resource="https://w3id.org/saref#OpenState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#PauseCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#PauseCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#PauseCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Power -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Power">
+        <rdf:type rdf:resource="https://w3id.org/saref#Power"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Pressure -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Pressure">
+        <rdf:type rdf:resource="https://w3id.org/saref#Pressure"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Price -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Price">
+        <rdf:type rdf:resource="https://w3id.org/saref#Price"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Safety -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Safety">
+        <rdf:type rdf:resource="https://w3id.org/saref#Safety"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#SensingFunction -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#SensingFunction">
+        <rdf:type rdf:resource="https://w3id.org/saref#SensingFunction"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#GetSensingDataCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Sensor -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Sensor">
+        <rdf:type rdf:resource="https://w3id.org/saref#Sensor"/>
+        <hasCategory rdf:resource="https://w3id.org/saref#Sensor"/>
+        <hasFunction rdf:resource="https://w3id.org/saref#SensingFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#SetAbsoluteLevelCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#SetAbsoluteLevelCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#SetAbsoluteLevelCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#SetRelativeLevelCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#SetRelativeLevelCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#SetRelativeLevelCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Smoke -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Smoke">
+        <rdf:type rdf:resource="https://w3id.org/saref#Smoke"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#SmokeSensor -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#SmokeSensor">
+        <rdf:type rdf:resource="https://w3id.org/saref#SmokeSensor"/>
+        <IsUsedFor rdf:resource="https://w3id.org/saref#Smoke"/>
+        <consistsOf rdf:resource="https://w3id.org/saref#Sensor"/>
+        <hasCategory rdf:resource="https://w3id.org/saref#Sensor"/>
+        <hasFunction rdf:resource="https://w3id.org/saref#EventFunction"/>
+        <hasFunction rdf:resource="https://w3id.org/saref#SensingFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#StartCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#StartCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#StartCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#StartState -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#StartState">
+        <rdf:type rdf:resource="https://w3id.org/saref#StartState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#StartStopFunction -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#StartStopFunction">
+        <rdf:type rdf:resource="https://w3id.org/saref#StartStopFunction"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#StartCommand"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#StopCommand"/>
+        <hasCommand rdf:resource="https://w3id.org/saref#ToggleCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#StepDownCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#StepDownCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#StepDownCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#StepUpCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#StepUpCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#StepUpCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#StopCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#StopCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#StopCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#StopState -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#StopState">
+        <rdf:type rdf:resource="https://w3id.org/saref#StopState"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Storage -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Storage">
+        <rdf:type rdf:resource="https://w3id.org/saref#Storage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Switch -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Switch">
+        <rdf:type rdf:resource="https://w3id.org/saref#Switch"/>
+        <hasCategory rdf:resource="https://w3id.org/saref#Actuator"/>
+        <hasFunction rdf:resource="https://w3id.org/saref#OnOffFunction"/>
+        <hasFunction rdf:resource="https://w3id.org/saref#OpenCloseFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#SwitchOnService -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#SwitchOnService">
+        <rdf:type rdf:resource="https://w3id.org/saref#SwitchOnService"/>
+        <hasInputParameter rdf:resource="https://w3id.org/saref#OffState"/>
+        <hasOutputParameter rdf:resource="https://w3id.org/saref#OnState"/>
+        <isOfferedBy rdf:resource="https://w3id.org/saref#LightSwitch"/>
+        <represents rdf:resource="https://w3id.org/saref#OnOffFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Temperature -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Temperature">
+        <rdf:type rdf:resource="https://w3id.org/saref#Temperature"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#TemperatureSensor -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#TemperatureSensor">
+        <rdf:type rdf:resource="https://w3id.org/saref#TemperatureSensor"/>
+        <IsUsedFor rdf:resource="https://w3id.org/saref#Temperature"/>
+        <consistsOf rdf:resource="https://w3id.org/saref#Sensor"/>
+        <hasCategory rdf:resource="https://w3id.org/saref#Sensor"/>
+        <hasFunction rdf:resource="https://w3id.org/saref#SensingFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#ToggleCommand -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#ToggleCommand">
+        <rdf:type rdf:resource="https://w3id.org/saref#ToggleCommand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Washing -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Washing">
+        <rdf:type rdf:resource="https://w3id.org/saref#Washing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#WashingMachine -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#WashingMachine">
+        <rdf:type rdf:resource="https://w3id.org/saref#WashingMachine"/>
+        <accomplishes rdf:resource="https://w3id.org/saref#Washing"/>
+        <hasCategory rdf:resource="https://w3id.org/saref#Appliance"/>
+        <hasCategory rdf:resource="https://w3id.org/saref#Load"/>
+        <hasFunction rdf:resource="https://w3id.org/saref#StartStopFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Water -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Water">
+        <rdf:type rdf:resource="https://w3id.org/saref#Water"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#WellBeing -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#WellBeing">
+        <rdf:type rdf:resource="https://w3id.org/saref#WellBeing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#Window -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Window">
+        <rdf:type rdf:resource="https://w3id.org/saref#Window"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/saref#watt_hour -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#watt_hour">
+        <rdf:type rdf:resource="https://w3id.org/saref#EnergyUnit"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Watt Hor is a unit of energy equivalent to one watt (1 W) of power expended for one hour (1 h) of time. An energy expenditure of 1 Wh represents 3600 joules </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">watt hour</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="https://w3id.org/saref#Actuator">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Actuator</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A device responsible for moving or controlling a mechanism or system</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Appliance">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Appliance</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An electrical/mechanical machine that accomplish some household functions, such as cleaning or cooking</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Cleaning">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cleaning</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of task for which a device is designed</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#CloseCommand">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of command</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close command</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#CloseState">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Close state</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The state of a device that is CLOSE</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Coal">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">coal</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of commodity</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Door">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Door</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A building object that can be controlled by devices, for example it can be automatically opened or closed by an actuator.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#DoorSwitch">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Door switch</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A device that consists of a switch, has category saref:Actuator, performs the saref:OpenCloseFunction and is used for the purpose of controlling a building object of type saref:Door</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Drying">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Drying</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of task for which a device is designed</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Electricity">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Electricity</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of commodity</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Energy">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in an energy unit (Kilowatt_Hour or Watt_hour)  </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Energy </rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#EnergyMeter">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Energy meter</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An energy meter is a device that consists of a meter, has category saref:Meter, performs the saref:MeteringFunction and is used for the purpose of measuring the saref:Energy property</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Entertainment">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Entertainment</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of task for which a device is designed</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#EventFunction">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Event function</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A function that allows to notify another device that a certain threshold value has been exceeded</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Gas">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gas</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of commodity</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Generator">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Generator</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of energy-related device that generates energy</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#GetCurrentMeterValueCommand">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of get command</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Get current meter value command</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#GetMeterDataCommand">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Get meter data command</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of get command</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#GetMeterHistoryCommand">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of get command</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Get meter history command</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#GetSensingDataCommand">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of get command</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Get sensing data command</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#HVAC">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HVAC</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Heating, Ventilation and Air Conditioning (HVAC) device that provides indoor environmental comfort</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Humidity">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in a humidity unit </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Humidity</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#LevelControlFunction">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Level control function</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An actuating function that allows to do level adjustments of an actuator in a certain range (e.g., 0%-100%), such as dimming a light or set the speed of an electric motor. </rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Light">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Light</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in a illuminance unit (lux)</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#LightSwitch">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Light switch</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A device that consists of a switch, has category saref:Actuator, performs the saref:OnOffFunction and is used for the purpose of controlling a property of type saref:Light</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Lighting">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lighting</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A device used for illumination, irradiation, signaling, or projection</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Load">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Load</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of energy-related device that consumes energy</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Meter">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Meter</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A device built to accurately detect and display an electrical quantity in a form readable by a human being. 
+A device that has category saref:Meter and performs a saref:MeteringFunction.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#MeteringFunction">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Metering function</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A function that allows to get data from a meter, such as current meter reading or instantaneous demand</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#MicroRenewable">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A device that generates renewable energy from natural resources such as teh sun, wind and water</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Micro renewable</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Motion">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in a unit of measure for motion</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Motion</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Multimedia">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A device designed to display, store, record or play multimedia content such as audio, images, animation, video </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Multimedia</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Network">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Network</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A device used to connect other devices in a network, such as hub, switch or router in a Local Area Network (LAN). </rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Notify">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Notify</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#NotifyCommand">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of command</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Notify command</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Occupancy">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Occupancy</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in a unit of measure for occupancy</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#OffCommand">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of command</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Off command</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#OffState">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The state of a device that is ON</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Off state</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#OnCommand">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of command</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">On command</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#OnOffFunction">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An actuating function that allows to switch on and off an actuator</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">On off function</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#OnState">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The state of a device that is OFF </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">On state</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#OpenCloseFunction">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Open close function</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An actuating function that allows to open and close a device</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#OpenCommand">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Open command</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of command</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#OpenState">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The state of a device that is OPEN </rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Open state</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#PauseCommand">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pause command</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of command</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Power">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in a power unit (watt or kilowatt)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Power </rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Pressure">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pressure</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in a pressure unit (bar or pascal)</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Price">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Price</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured using saref:Currency</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Safety">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of task for which a device is designed</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Safety</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#SensingFunction">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A function that allows to transmit data from sensors, such as measurement values (e.g., temperature) or sensing data (e.g., occupancy)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sensing function</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Sensor">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sensor</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A device that detects and responds to events or changes in the physical environment such as light, motion, or temperature changes.
+A device that has category saref:Sensor and performs a saref:SensingFunction.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#SetAbsoluteLevelCommand">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of set level command</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Set absolute level command</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#SetRelativeLevelCommand">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of set level command</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Set relative level command</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Smoke">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Smoke</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in a unit of measure for smoke</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#SmokeSensor">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Smoke sensor</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and saref:EventFunction, and is used for the purpose of sensing a property of type saref:Smoke and notifying that a certain threshold has been exceeded.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#StartCommand">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of command</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Start command</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#StartState">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Start state</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The state of a device that is STARTED</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#StartStopFunction">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An actuating function that allows to start and stop a device</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">start stopfunction</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#StepDownCommand">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Step down command</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of command</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#StepUpCommand">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Step up command</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of command</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#StopCommand">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stop command</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of command</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#StopState">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The state of a device that is STOPPED</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stop state</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Storage">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Storage</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of energy-related device that stores energy</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Switch">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A device that has category saref:Actuator and performs an actuating function of type saref:OnOffFunction or saref:OpenCloseFunction</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Switch</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#SwitchOnService">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Switch on service</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of service that represents an on/off function to the network</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Temperature">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Temperature</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A saref:Property characterized by a certain value (saref:hasValue property) that is measured in a temperature unit (degree_Celsius, degree_Fahrenheit, or degree_kelvin)</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#TemperatureSensor">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and is used for the purpose of sensing a property of type saref:Temperature</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Temperature sensor</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#ToggleCommand">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Toggle command</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of command</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Washing">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of task for which a device is designed</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Washing</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#WashingMachine">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Washing machine</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A device that has category saref:Appliance, accomplishes the task saref:Washing and performs an actuating function of type saref:StartPauseFunction</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Water">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Water</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of commodity</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#WellBeing">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A type of task for which a device is designed</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Well being</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/saref#Window">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Window</rdfs:label>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A building object that can be controlled by devices, for example it can be automatically opened or closed by an actuator.</rdfs:comment>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.3.20151118-2017) https://github.com/owlcs/owlapi -->
+
