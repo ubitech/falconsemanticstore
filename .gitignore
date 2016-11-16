@@ -6,6 +6,9 @@
 
 # Maven
 target/
+api/target
+rest-api/target
+util/target
 
 # NetBeans
 build/
