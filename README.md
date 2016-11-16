@@ -1,7 +1,7 @@
 # SAMPLE
 > A spring-boot REST API for publishing Ontologies, adding instances and quering a Triplestore
 
-#Publish a new Ontology  
+##Publish a new Ontology  
 
 REST - API  
 http://IP/api/v1/ontology/publish  
