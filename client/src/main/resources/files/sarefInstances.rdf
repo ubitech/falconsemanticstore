@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/saref#"
+     xml:base="https://w3id.org/saref"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:saref="https://w3id.org/saref#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:time="http://www.w3.org/2006/time#"
+     xmlns:om="http://www.wurvoc.org/vocabularies/om-1.8/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"> 
+
+<!-- https://w3id.org/saref#ChemistryBuilding -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#ChemistryBuilding">
+        <rdf:type rdf:resource="https://w3id.org/saref#BuildingSpace"/>
+        <contains rdf:resource="https://w3id.org/saref#Sensor15233"/>
+        <hasSpaceType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">chemistry</hasSpaceType>
+    </owl:NamedIndividual>
+    
+
+  <!-- https://w3id.org/saref#Sensor15233 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/saref#Sensor15233">
+        <rdf:type rdf:resource="https://w3id.org/saref#Sensor"/>
+        <hasCategory rdf:resource="https://w3id.org/saref#HVAC"/>
+        <isLocatedIn rdf:resource="https://w3id.org/saref#ChemistryBuilding"/>
+        <hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Siemens</hasManufacturer>
+        <isInterruptionPossible rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isInterruptionPossible>
+    </owl:NamedIndividual>
+
+</rdf:RDF>

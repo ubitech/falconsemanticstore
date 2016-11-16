@@ -31,7 +31,6 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20160212</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- Commons codecs-->

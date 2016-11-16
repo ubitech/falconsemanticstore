@@ -101,6 +101,39 @@ public class Client {
         return result;
     }
 
+    public static String getClassSubclasses(String classURI) {
+
+        final String uri = "http://falconsemanticmanager.euprojects.net/api/v1/ontology/class/subclasses";
+        //final String uri = "http://localhost:8090/api/v1/ontology/instance/attributes";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpEntity<String> entity = new HttpEntity<>(classURI, headers);
+
+        String result = restTemplate.postForObject(uri, entity, String.class);
+
+        return result;
+    }
+
+    public static String getClassAttributes(String classURI) {
+
+        final String uri = "http://falconsemanticmanager.euprojects.net/api/v1/ontology/class/attributes";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpEntity<String> entity = new HttpEntity<>(classURI, headers);
+
+        String result = restTemplate.postForObject(uri, entity, String.class);
+
+        return result;
+    }
+
     public static void main(String[] args) {
         String sparqlQuery = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
                 + "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
@@ -110,11 +143,11 @@ public class Client {
                 + "LIMIT 10";
 
         //Publish Ontology example
-        String publishedOntology = publishOntology("/files/iot-energyldao.owl", "RDF/XML");
+        String publishedOntology = publishOntology("/files/saref.owl", "RDF/XML");
         System.out.println("publishedOntology " + publishedOntology);
 
         //Add Extra Instances
-        String instancesRequest = addInstances("/files/analyticsid128_version1_kmeans_resultdocumentnt.n3", "Turtle");
+        String instancesRequest = addInstances("/files/sarefInstances.rdf", "RDF/XML");
         System.out.println("instancesRequest " + instancesRequest);
 
         //Do query example
@@ -122,8 +155,16 @@ public class Client {
         System.out.println("queryResult " + queryResult);
 
         //get Instance Attributes
-        String instanceAttributes = getInstanceAttributes("http://localhost:8000/analyticsontology#analytic_process");
+        String instanceAttributes = getInstanceAttributes("https://w3id.org/saref#Sensor15233");
         System.out.println("instanceAttributes " + instanceAttributes);
+
+        //get Class Attributes
+        String classAttributes = getClassAttributes("https://w3id.org/saref#Service");
+        System.out.println("classAttributes " + classAttributes);
+
+        //get Class subclasses
+        String classSubclasses = getClassSubclasses("https://w3id.org/saref#Device");
+        System.out.println("classSubclasses " + classSubclasses);
     }
 
 }

@@ -17,6 +17,7 @@ import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,6 +49,7 @@ public class OntologyRestController {
 
         QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI, tobject);
         ResultSet results = q.execSelect();
+        //ResultSetFormatter.out(System.out, results);
 
         // write to a ByteArrayOutputStream
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -56,12 +58,13 @@ public class OntologyRestController {
 
         // and turn that into a String
         String json = new String(outputStream.toByteArray());
-        System.out.println("Results as json mou" + json);
-        System.out.println("Results as string " + ResultSetFormatter.asText(results));
+        JSONObject jsonObject = new JSONObject(json);
+        //System.out.println("Results as json" + json);
+        //System.out.println("Results as string " + ResultSetFormatter.asText(results));
 
         q.close();
 
-        return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, json);
+        return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, jsonObject.toString());
     }
 
     @RequestMapping(value = "/instances/publish", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
@@ -91,12 +94,9 @@ public class OntologyRestController {
     public RestResponse publishOntologyToTriplestorePOST(@RequestParam("file") MultipartFile initialFile, @RequestParam("format") String format) {
 
         try {
-            
-            
+
             InputStream inputStream = initialFile.getInputStream();
             String serviceURI = triplestorURL + "/" + triplestoreDataset + "/data";
-            
-            System.out.println("serviceURI"+serviceURI);
 
             DatasetAccessor accessor;
             accessor = DatasetAccessorFactory.createHTTP(serviceURI);
@@ -106,7 +106,7 @@ public class OntologyRestController {
             accessor.add(m);
             //accessor.putModel(m);
             inputStream.close();
-            m.close();  
+            m.close();
 
         } catch (IOException ex) {
             Logger.getLogger(OntologyRestController.class.getName()).log(Level.SEVERE, null, ex);
@@ -118,14 +118,21 @@ public class OntologyRestController {
     @RequestMapping(value = "/instance/attributes", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
     public RestResponse getInstanceAttributes(@RequestBody String instanceURI) {
 
-        String query = "select distinct  ?property  where {\n"
-                + "         ?instance a <" + instanceURI + "> . \n"
-                + "  ?instance ?property ?obj . }";
+//        String query = "select distinct  ?property  where {\n"
+//                + "         ?instance a <" + instanceURI + "> . \n"
+//                + "  ?instance ?property ?obj . }";
+        
+         String query = "select distinct  ?instanceproperties  where {\n" +
+"        <"+instanceURI+"> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?class  .\n" +
+"        <"+instanceURI+"> ?instanceproperties ?obj .}";
+        
+
 
         String serviceURI = triplestorURL + "/" + triplestoreDataset + "/query";
 
         QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI, query);
         ResultSet results = q.execSelect();
+        //ResultSetFormatter.out(System.out, results);
 
         // write to a ByteArrayOutputStream
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -143,14 +150,16 @@ public class OntologyRestController {
     @RequestMapping(value = "/class/subclasses", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
     public RestResponse getClassSubclasses(@RequestBody String classURI) {
 
-        String query = "SELECT distinct ?sub WHERE {\n"
-                + "  ?sub <http://www.w3.org/2000/01/rdf-schema#subClassOf> <" + classURI + ">\n"
+        String query = "SELECT distinct ?subclasses WHERE {\n"
+                + "  ?subclasses <http://www.w3.org/2000/01/rdf-schema#subClassOf> <" + classURI + ">\n"
                 + "}";
 
         String serviceURI = triplestorURL + "/" + triplestoreDataset + "/query";
 
         QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI, query);
         ResultSet results = q.execSelect();
+
+        //ResultSetFormatter.out(System.out, results);
 
         // write to a ByteArrayOutputStream
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -164,18 +173,25 @@ public class OntologyRestController {
 
         return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, json);
     }
-    
-        @RequestMapping(value = "/class/attributes", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
+
+    @RequestMapping(value = "/class/attributes", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
     public RestResponse getClassAttributes(@RequestBody String classURI) {
 
-        String query = "SELECT distinct ?sub WHERE {\n"
-                + "  ?sub <http://www.w3.org/2000/01/rdf-schema#subClassOf> <" + classURI + ">\n"
+        String query = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
+                + "PREFIX owl:  <http://www.w3.org/2002/07/owl#>\n"
+                + "\n"
+                + "SELECT ?classproperties ?a\n"
+                + "WHERE {\n"
+                + "  values ?propertyType { owl:DatatypeProperty owl:ObjectProperty }\n"
+                + "  ?classproperties a ?propertyType ;\n"
+                + "            rdfs:domain <" + classURI + "> .\n"
                 + "}";
 
         String serviceURI = triplestorURL + "/" + triplestoreDataset + "/query";
 
         QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI, query);
         ResultSet results = q.execSelect();
+        //ResultSetFormatter.out(System.out, results);
 
         // write to a ByteArrayOutputStream
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
