@@ -5,13 +5,7 @@
  */
 package eu.falcon.semantic.client;
 
-import org.apache.jena.query.DatasetAccessor;
-import org.apache.jena.query.DatasetAccessorFactory;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.vocabulary.VCARD;
-import org.springframework.beans.factory.annotation.Value;
+import org.json.JSONObject;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -104,7 +98,7 @@ public class Client {
     public static String getClassSubclasses(String classURI) {
 
         final String uri = "http://falconsemanticmanager.euprojects.net/api/v1/ontology/class/subclasses";
-        //final String uri = "http://localhost:8090/api/v1/ontology/instance/attributes";
+        //final String uri = "http://localhost:8090/api/v1/ontology/class/subclasses";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -118,9 +112,27 @@ public class Client {
         return result;
     }
 
-    public static String getClassAttributes(String classURI) {
+    public static JSONObject getClassAttributes(String classURI) {
 
         final String uri = "http://falconsemanticmanager.euprojects.net/api/v1/ontology/class/attributes";
+        //final String uri = "http://localhost:8090/api/v1/ontology/class/attributes";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpEntity<String> entity = new HttpEntity<>(classURI, headers);
+
+        String result = restTemplate.postForObject(uri, entity, String.class);
+
+        return new JSONObject(result);
+    }
+
+    public static String getClassShema(String classURI) {
+
+        final String uri = "http://falconsemanticmanager.euprojects.net/api/v1/ontology/class/schema";
+        //final String uri = "http://localhost:8090/api/v1/ontology/class/schema";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -159,12 +171,16 @@ public class Client {
         System.out.println("instanceAttributes " + instanceAttributes);
 
         //get Class Attributes
-        String classAttributes = getClassAttributes("https://w3id.org/saref#Service");
+        JSONObject classAttributes = getClassAttributes("https://w3id.org/saref#Service");
         System.out.println("classAttributes " + classAttributes);
 
         //get Class subclasses
         String classSubclasses = getClassSubclasses("https://w3id.org/saref#Device");
         System.out.println("classSubclasses " + classSubclasses);
+
+        //get Class schema
+        String classSchema = getClassShema("https://w3id.org/saref#Service");
+        System.out.println("classSchema " + classSchema);
     }
 
 }

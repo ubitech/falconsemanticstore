@@ -7,16 +7,21 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.jena.query.DatasetAccessor;
 import org.apache.jena.query.DatasetAccessorFactory;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
+import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.RDFNode;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -121,30 +126,30 @@ public class OntologyRestController {
 //        String query = "select distinct  ?property  where {\n"
 //                + "         ?instance a <" + instanceURI + "> . \n"
 //                + "  ?instance ?property ?obj . }";
-        
-         String query = "select distinct  ?instanceproperties  where {\n" +
-"        <"+instanceURI+"> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?class  .\n" +
-"        <"+instanceURI+"> ?instanceproperties ?obj .}";
-        
-
+        String query = "select distinct  ?instanceproperties  where {\n"
+                + "        <" + instanceURI + "> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?class  .\n"
+                + "        <" + instanceURI + "> ?instanceproperties ?obj .}";
 
         String serviceURI = triplestorURL + "/" + triplestoreDataset + "/query";
 
         QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI, query);
         ResultSet results = q.execSelect();
-        //ResultSetFormatter.out(System.out, results);
 
-        // write to a ByteArrayOutputStream
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        JSONArray instancepropertiesArray = new JSONArray();
+        while (results.hasNext()) {
+            QuerySolution solution = results.nextSolution();
+            RDFNode subclass = solution.get("instanceproperties");
+            instancepropertiesArray.put(subclass.toString());
 
-        ResultSetFormatter.outputAsJSON(outputStream, results);
-
-        // and turn that into a String
-        String json = new String(outputStream.toByteArray());
+        }
+        
+        JSONObject instance = new JSONObject();
+        instance.put("Instance", instanceURI);
+        instance.put("properties", instancepropertiesArray);
 
         q.close();
 
-        return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, json);
+        return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, instance.toString());
     }
 
     @RequestMapping(value = "/class/subclasses", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
@@ -159,23 +164,79 @@ public class OntologyRestController {
         QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI, query);
         ResultSet results = q.execSelect();
 
-        //ResultSetFormatter.out(System.out, results);
+        JSONArray subclassesArray = new JSONArray();
+        while (results.hasNext()) {
+            QuerySolution solution = results.nextSolution();
+            RDFNode subclass = solution.get("subclasses");
+            subclassesArray.put(subclass.toString());
 
-        // write to a ByteArrayOutputStream
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        }
 
-        ResultSetFormatter.outputAsJSON(outputStream, results);
-
-        // and turn that into a String
-        String json = new String(outputStream.toByteArray());
-
+        JSONObject mainClass = new JSONObject();
+        mainClass.put("class", classURI);
+        mainClass.put("subclasses", subclassesArray);
         q.close();
 
-        return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, json);
+        return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, mainClass.toString());
     }
 
     @RequestMapping(value = "/class/attributes", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
-    public RestResponse getClassAttributes(@RequestBody String classURI) {
+    public RestResponse getClassAttributesRest(@RequestBody String classURI) {
+
+        JSONArray classAttributes = getClassAttributes(classURI);
+
+        return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, classAttributes.toString());
+    }
+
+    @RequestMapping(value = "/class/schema", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
+    public RestResponse getClassShema(@RequestBody String classURI) {
+
+        System.out.println("mpika edo");
+
+        String query = "SELECT distinct ?subclasses WHERE {\n"
+                + "  ?subclasses <http://www.w3.org/2000/01/rdf-schema#subClassOf> <" + classURI + ">\n"
+                + "}";
+
+        String serviceURI = triplestorURL + "/" + triplestoreDataset + "/query";
+
+        QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI, query);
+        ResultSet results = q.execSelect();
+
+        List<String> subclasses = new ArrayList<String>();
+        JSONArray subclassesArray = new JSONArray();
+
+        while (results.hasNext()) {
+            QuerySolution solution = results.nextSolution();
+            RDFNode subclass = solution.get("subclasses");
+            subclasses.add(subclass.toString());
+            subclassesArray.put(subclass.toString());
+
+        }
+
+        JSONObject mainClass = new JSONObject();
+        mainClass.put("URI", classURI);
+        mainClass.put("attributes", getClassAttributes(classURI));
+
+        JSONArray subclassesAttributesArray = new JSONArray();
+
+        for (String subclass : subclasses) {
+            JSONObject subClassObject = new JSONObject();
+            subClassObject.put("URI", subclass);
+            subClassObject.put("attributes", getClassAttributes(subclass));
+            subclassesAttributesArray.put(subClassObject);
+
+        }
+
+        JSONObject response = new JSONObject();
+        response.put("mainClass", mainClass);
+        response.put("subclasses", subclassesAttributesArray);
+
+        q.close();
+
+        return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, response.toString());
+    }
+
+    private JSONArray getClassAttributes(String classURI) {
 
         String query = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
                 + "PREFIX owl:  <http://www.w3.org/2002/07/owl#>\n"
@@ -191,111 +252,20 @@ public class OntologyRestController {
 
         QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI, query);
         ResultSet results = q.execSelect();
-        //ResultSetFormatter.out(System.out, results);
 
-        // write to a ByteArrayOutputStream
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        JSONArray classproperties = new JSONArray();
 
-        ResultSetFormatter.outputAsJSON(outputStream, results);
-
-        // and turn that into a String
-        String json = new String(outputStream.toByteArray());
-
+        while (results.hasNext()) {
+            QuerySolution solution = results.nextSolution();
+            RDFNode classproperty = solution.get("classproperties");
+            classproperties.put(classproperty.toString());
+        }
         q.close();
 
-        return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, json);
+        return classproperties;
+
     }
 
-    ///////////////////////////////////////////////
-    //GET CALLS
-    ///////////////////////////////////////////////
-    @RequestMapping(path = "/publish", method = RequestMethod.GET)
-    public RestResponse insertOntologyToTriplestore() {
-        File initialFile = null;
-        try {
-            InputStream inputStream;
-
-            initialFile = new File("/home/eleni/Downloads/iot-energyldao.owl");
-            inputStream = new FileInputStream(initialFile);
-
-            //triplestore datasource
-            String serviceURI = "http://192.168.3.15:3030/ds2/data";
-
-            DatasetAccessor accessor;
-            accessor = DatasetAccessorFactory.createHTTP(serviceURI);
-            Model m = ModelFactory.createDefaultModel();
-            String base = "http://samle-project.com/";
-            m.read(inputStream, base, "RDF/XML");
-            accessor.add(m);
-            inputStream.close();
-
-        } catch (IOException ex) {
-            Logger.getLogger(OntologyRestController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return new RestResponse(BasicResponseCode.SUCCESS, Message.ONTOLOGY_CREATED, "uploaded file name" + initialFile.getName());
-    }
-
-    @RequestMapping(path = "/instances/publish", method = RequestMethod.GET)
-    public RestResponse insertInstancesToTriplestore() {
-        File initialFile = null;
-        try {
-            InputStream inputStream;
-
-            //inputStream = new ByteArrayInputStream(instances.getBytes(StandardCharsets.UTF_8));
-            initialFile = new File("/home/eleni/Downloads/analyticsid128_version1_kmeans_resultdocumentnt.n3");
-            inputStream = new FileInputStream(initialFile);
-
-//triplestore datasource
-            String serviceURI = "http://192.168.3.15:3030/ds2/data";
-
-            DatasetAccessor accessor;
-            accessor = DatasetAccessorFactory.createHTTP(serviceURI);
-            Model m = ModelFactory.createDefaultModel();
-            String base = "http://samle-project.com/";
-            m.read(inputStream, base, "Turtle");
-            accessor.add(m);
-            inputStream.close();
-
-        } catch (IOException ex) {
-            Logger.getLogger(OntologyRestController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return new RestResponse(BasicResponseCode.SUCCESS, Message.IMPORTED_INSTANCES, "imported instances" + initialFile.getName());
-    }
-
-    @RequestMapping(path = "/query/run", method = RequestMethod.GET)
-    public RestResponse executeQueryToTriplestore() {
-
-        String serviceURI = "http://192.168.3.15:3030/ds2/query";
-
-        String query = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
-                + "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
-                + "SELECT * WHERE {\n"
-                + "  ?sub ?pred ?obj .\n"
-                + "} \n"
-                + "LIMIT 10";
-
-        QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI, query);
-        ResultSet results = q.execSelect();
-
-        ResultSetFormatter.out(System.out, results);
-
-//        while (results.hasNext()) {
-//            QuerySolution solution = results.nextSolution();
-//            RDFNode averageEnergy = solution.get("AverageEnergy");
-//            System.out.println(averageEnergy);
-//        }
-        return new RestResponse(BasicResponseCode.SUCCESS, null, "test");
-    }
-
-//    @RequestMapping(path = "/schema", method = RequestMethod.GET)
-//    public RestResponse getInstanceAttributes() {
-//        
-//    
-//
-//        return new RestResponse(BasicResponseCode.SUCCESS, null, "test");
-//    }
     /**
      * Inner class containing all the static messages which will be used in an
      * RestResponse.
