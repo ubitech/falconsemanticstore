@@ -106,7 +106,7 @@ public class OntologyRestController {
             DatasetAccessor accessor;
             accessor = DatasetAccessorFactory.createHTTP(serviceURI);
             Model m = ModelFactory.createDefaultModel();
-            String base = "http://samle-project.com/";
+            String base = "http://falcon.org/";
             m.read(inputStream, base, format);
             accessor.add(m);
             //accessor.putModel(m);

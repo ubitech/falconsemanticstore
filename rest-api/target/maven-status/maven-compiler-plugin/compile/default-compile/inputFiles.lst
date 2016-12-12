@@ -1,5 +1,5 @@
-/home/eleni/NetBeansProjects/falconsemanticstore/rest-api/src/main/java/eu/falcon/semantic/rest/response/BasicResponseCode.java
-/home/eleni/NetBeansProjects/falconsemanticstore/rest-api/src/main/java/eu/falcon/semantic/rest/response/RestResponse.java
-/home/eleni/NetBeansProjects/falconsemanticstore/rest-api/src/main/java/eu/falcon/semantic/rest/response/ResponseCode.java
-/home/eleni/NetBeansProjects/falconsemanticstore/rest-api/src/main/java/eu/falcon/semantic/rest/response/GeneralMessages.java
-/home/eleni/NetBeansProjects/falconsemanticstore/rest-api/src/main/java/eu/falcon/semantic/rest/api/OntologyRestController.java
+/home/jim/Projects/repos/falconsemanticstore/rest-api/src/main/java/eu/falcon/semantic/rest/response/BasicResponseCode.java
+/home/jim/Projects/repos/falconsemanticstore/rest-api/src/main/java/eu/falcon/semantic/rest/response/ResponseCode.java
+/home/jim/Projects/repos/falconsemanticstore/rest-api/src/main/java/eu/falcon/semantic/rest/response/RestResponse.java
+/home/jim/Projects/repos/falconsemanticstore/rest-api/src/main/java/eu/falcon/semantic/rest/response/GeneralMessages.java
+/home/jim/Projects/repos/falconsemanticstore/rest-api/src/main/java/eu/falcon/semantic/rest/api/OntologyRestController.java

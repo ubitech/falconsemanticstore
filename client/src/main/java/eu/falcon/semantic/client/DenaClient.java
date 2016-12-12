@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
  *
  * @author Eleni Fotopoulou <efotopoulou@ubitech.eu>
  */
-public class Client {
+public class DenaClient {
 
     public static String publishOntology(String fileClassPath, String format) {
 
@@ -155,17 +155,18 @@ public class Client {
                 + "LIMIT 10";
 
         //Publish Ontology example
-        String publishedOntology = publishOntology("/files/saref.owl", "RDF/XML");
+        String publishedOntology = publishOntology("/files/dena.rdf", "RDF/XML");
         System.out.println("publishedOntology " + publishedOntology);
 
+
         //Add Extra Instances
-        String instancesRequest = addInstances("/files/sarefInstances.rdf", "RDF/XML");
+        String instancesRequest = addInstances("/files/denaPostInstances.rdf", "RDF/XML");
         System.out.println("instancesRequest " + instancesRequest);
 
         //Do query example
         String queryResult = runQuery(sparqlQuery);
         System.out.println("queryResult " + queryResult);
-
+        /*
         //get Instance Attributes
         String instanceAttributes = getInstanceAttributes("https://w3id.org/saref#Sensor15233");
         System.out.println("instanceAttributes " + instanceAttributes);
@@ -181,6 +182,7 @@ public class Client {
         //get Class schema
         String classSchema = getClassShema("https://w3id.org/saref#Service");
         System.out.println("classSchema " + classSchema);
+        */
     }
 
 }

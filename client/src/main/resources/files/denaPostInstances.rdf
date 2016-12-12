@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.falcon.org"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:textile-concepts="http://www.falcon.org/ontologies/textile-concepts#">
+
+<!--http://www.falcon.org/ontologies/textile-concepts#Social_Media_data_1-->
+<owl:NamedIndividual rdf:about="http://www.falcon.org/ontologies/textile-concepts#Social_Media_data_1"> 
+	<rdf:type rdf:resource="http://www.falcon.org/ontologies/textile-concepts#Social_Media_data"/>
+	<textile-concepts:refersToCountry rdf:resource="http://www.falcon.org/ontologies/textile-concepts#Switzerland"/>
+	<textile-concepts:refersToGender rdf:resource="http://www.falcon.org/ontologies/textile-concepts#Male"/>
+	<textile-concepts:refersToColor rdf:resource="http://www.falcon.org/ontologies/textile-concepts#Blue"/>
+	<textile-concepts:refersToBrandProducer rdf:resource="http://www.falcon.org/ontologies/textile-concepts#Tommy_Hilfiger"/>
+	<textile-concepts:refersToCategory rdf:resource="http://www.falcon.org/ontologies/textile-concepts#Shirts"/>
+	<textile-concepts:LogID rdf:datatype="http://www.w3.org/2001/XMLSchema#int">10455</textile-concepts:LogID>
+	<textile-concepts:LogName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Social_Media_data_1</textile-concepts:LogName>
+	<textile-concepts:LogTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-09-22T15:05:28Z</textile-concepts:LogTime>
+	<textile-concepts:Comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Comment1</textile-concepts:Comment>
+	<textile-concepts:Vote rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">17</textile-concepts:Vote>
+	<textile-concepts:SocialMediaSource rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaceBook</textile-concepts:SocialMediaSource>
+</owl:NamedIndividual>
+
+</rdf:RDF>
