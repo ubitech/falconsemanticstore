@@ -1,7 +1,7 @@
 eu/falcon/semantic/security/DefaultRSAKeypairGenerator.class
-eu/falcon/semantic/util/Util.class
 eu/falcon/semantic/security/RSAKeyMaker.class
+eu/falcon/semantic/util/Util.class
 eu/falcon/semantic/util/Util$ALGORITHM.class
-eu/falcon/semantic/util/Patterns.class
 eu/falcon/semantic/security/SignatureNotVerifiedException.class
+eu/falcon/semantic/util/Patterns.class
 eu/falcon/semantic/security/JWTSecurityHandler.class

@@ -8,27 +8,25 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.jena.query.DatasetAccessor;
-import org.apache.jena.query.DatasetAccessorFactory;
-import org.apache.jena.query.QueryExecution;
-import org.apache.jena.query.QueryExecutionFactory;
-import org.apache.jena.query.QuerySolution;
-import org.apache.jena.query.ResultSet;
-import org.apache.jena.query.ResultSetFormatter;
+
+import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -43,6 +41,29 @@ public class OntologyRestController {
 
     @Value("${fuseki.dataset}")
     private String triplestoreDataset;
+
+    ///////////////////////////////////////////////
+    //Get datasets
+    ///////////////////////////////////////////////
+    @RequestMapping(value="/query/datasets")
+    public RestResponse getDatasetNames() {
+        RestTemplate restTemplate = new RestTemplate();
+        LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
+        final String uri = "http://192.168.3.15:3030/$/server";
+
+        String result = restTemplate.getForObject(uri, String.class);
+        JSONObject jsonObj = new JSONObject(result);
+        JSONArray jsonArray = jsonObj.getJSONArray("datasets");
+        JSONObject response = new JSONObject();
+        Collection<String> datasets = new ArrayList<>();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            String dataset = jsonArray.getJSONObject(i).getString("ds.name");
+            datasets.add(dataset);
+        }
+        response.put("datasets", datasets);
+        //System.out.println(result);
+        return new RestResponse(BasicResponseCode.SUCCESS, Message.QUERY_EXECUTED, response.toString());
+    }
 
     ///////////////////////////////////////////////
     //POST CALLS
@@ -96,15 +117,18 @@ public class OntologyRestController {
     }
 
     @RequestMapping(value = "/publish", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
-    public RestResponse publishOntologyToTriplestorePOST(@RequestParam("file") MultipartFile initialFile, @RequestParam("format") String format) {
+    public RestResponse publishOntologyToTriplestorePOST(@RequestParam("file") MultipartFile initialFile,
+                                                         @RequestParam("format") String format,
+                                                         @RequestParam("dataset") String dataset) {
 
         try {
-
+            System.out.println("Dataset received: " + dataset);
             InputStream inputStream = initialFile.getInputStream();
-            String serviceURI = triplestorURL + "/" + triplestoreDataset + "/data";
+            String serviceURI = triplestorURL + "/" + dataset + "/data";
 
             DatasetAccessor accessor;
-            accessor = DatasetAccessorFactory.createHTTP(serviceURI);
+            Dataset dataset1 = DatasetFactory.create(serviceURI);
+            accessor = DatasetAccessorFactory.create(dataset1);// .createHTTP(serviceURI);
             Model m = ModelFactory.createDefaultModel();
             String base = "http://falcon.org/";
             m.read(inputStream, base, format);
@@ -112,6 +136,19 @@ public class OntologyRestController {
             //accessor.putModel(m);
             inputStream.close();
             m.close();
+
+
+
+//            // Make a TDB-backed dataset
+//            String directory = "MyDatabases/Dataset1" ;
+//            Dataset dataset1 = TDBFactory.createDataset(directory) ;
+//            dataset1.begin(ReadWrite.READ) ;
+//            // Get model inside the transaction
+//            Model model = dataset1.getDefaultModel() ;
+//            dataset1.end() ;
+//            dataset1.begin(ReadWrite.WRITE) ;
+//            model = dataset1.getDefaultModel() ;
+//            dataset1.end() ;
 
         } catch (IOException ex) {
             Logger.getLogger(OntologyRestController.class.getName()).log(Level.SEVERE, null, ex);

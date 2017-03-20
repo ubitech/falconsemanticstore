@@ -19,15 +19,16 @@ import org.springframework.web.client.RestTemplate;
  */
 public class DenaClient {
 
-    public static String publishOntology(String fileClassPath, String format) {
+    public static String publishOntology(String fileClassPath, String format, String dataset) {
 
         RestTemplate restTemplate = new RestTemplate();
         LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
-        //final String uri = "http://localhost:8090/api/v1/ontology/publish";
-        final String uri = "http://falconsemanticmanager.euprojects.net/api/v1/ontology/publish";
+        final String uri = "http://localhost:8090/api/v1/ontology/publish";
+        //final String uri = "http://falconsemanticmanager.euprojects.net/api/v1/ontology/publish";
 
         map.add("file", new ClassPathResource(fileClassPath));
         map.add("format", format);
+        map.add("dataset", dataset);
         HttpHeaders headers = new HttpHeaders();
 
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
@@ -155,13 +156,13 @@ public class DenaClient {
                 + "LIMIT 10";
 
         //Publish Ontology example
-        String publishedOntology = publishOntology("/files/dena.rdf", "RDF/XML");
+        String publishedOntology = publishOntology("/files/dena.rdf", "RDF/XML", "testdataset");
         System.out.println("publishedOntology " + publishedOntology);
 
 
         //Add Extra Instances
-        String instancesRequest = addInstances("/files/denaPostInstances.rdf", "RDF/XML");
-        System.out.println("instancesRequest " + instancesRequest);
+        //String instancesRequest = addInstances("/files/denaPostInstances.rdf", "RDF/XML");
+        //System.out.println("instancesRequest " + instancesRequest);
 
         //Do query example
         String queryResult = runQuery(sparqlQuery);

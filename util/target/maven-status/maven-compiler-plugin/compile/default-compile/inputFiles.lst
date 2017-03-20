@@ -1,5 +1,5 @@
-/home/jim/Projects/repos/falconsemanticstore/util/src/main/java/eu/falcon/semantic/util/Patterns.java
 /home/jim/Projects/repos/falconsemanticstore/util/src/main/java/eu/falcon/semantic/security/DefaultRSAKeypairGenerator.java
+/home/jim/Projects/repos/falconsemanticstore/util/src/main/java/eu/falcon/semantic/util/Patterns.java
 /home/jim/Projects/repos/falconsemanticstore/util/src/main/java/eu/falcon/semantic/util/Util.java
 /home/jim/Projects/repos/falconsemanticstore/util/src/main/java/eu/falcon/semantic/security/RSAKeyMaker.java
 /home/jim/Projects/repos/falconsemanticstore/util/src/main/java/eu/falcon/semantic/security/SignatureNotVerifiedException.java
