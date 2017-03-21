@@ -127,8 +127,7 @@ public class OntologyRestController {
             String serviceURI = triplestorURL + "/" + dataset + "/data";
 
             DatasetAccessor accessor;
-            Dataset dataset1 = DatasetFactory.create(serviceURI);
-            accessor = DatasetAccessorFactory.create(dataset1);// .createHTTP(serviceURI);
+            accessor = DatasetAccessorFactory.createHTTP(serviceURI);
             Model m = ModelFactory.createDefaultModel();
             String base = "http://falcon.org/";
             m.read(inputStream, base, format);
