@@ -1,5 +1,7 @@
 package eu.falcon.semantic.rest.api;
 
+import com.goebl.david.Response;
+import com.goebl.david.Webb;
 import eu.falcon.semantic.rest.response.RestResponse;
 import eu.falcon.semantic.rest.response.BasicResponseCode;
 import java.io.ByteArrayOutputStream;
@@ -45,7 +47,7 @@ public class OntologyRestController {
     ///////////////////////////////////////////////
     //Get datasets
     ///////////////////////////////////////////////
-    @RequestMapping(value="/query/datasets")
+    @RequestMapping(value = "/query/datasets")
     public RestResponse getDatasetNames() {
         RestTemplate restTemplate = new RestTemplate();
         LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
@@ -118,37 +120,34 @@ public class OntologyRestController {
 
     @RequestMapping(value = "/publish", method = RequestMethod.POST, headers = "Accept=application/xml, application/json")
     public RestResponse publishOntologyToTriplestorePOST(@RequestParam("file") MultipartFile initialFile,
-                                                         @RequestParam("format") String format,
-                                                         @RequestParam("dataset") String dataset) {
+            @RequestParam("format") String format,
+            @RequestParam("dataset") String dataset) {
 
         try {
-            System.out.println("Dataset received: " + dataset);
+
+            Webb webb = Webb.create();
+            Response<String> result = webb
+                    .post("http://192.168.3.15:3030/$/datasets/")
+                    .header("Content-Type", "application/x-www-form-urlencoded")
+                    .body("dbName="+dataset+"&dbType=tdb").asString();
+            
+            
+            
             InputStream inputStream = initialFile.getInputStream();
             String serviceURI = triplestorURL + "/" + dataset + "/data";
 
             DatasetAccessor accessor;
             accessor = DatasetAccessorFactory.createHTTP(serviceURI);
             Model m = ModelFactory.createDefaultModel();
-            String base = "http://falcon.org/";
+            String base = "http://samle-project.com/";
             m.read(inputStream, base, format);
             accessor.add(m);
-            //accessor.putModel(m);
             inputStream.close();
             m.close();
+            
+            
 
-
-
-//            // Make a TDB-backed dataset
-//            String directory = "MyDatabases/Dataset1" ;
-//            Dataset dataset1 = TDBFactory.createDataset(directory) ;
-//            dataset1.begin(ReadWrite.READ) ;
-//            // Get model inside the transaction
-//            Model model = dataset1.getDefaultModel() ;
-//            dataset1.end() ;
-//            dataset1.begin(ReadWrite.WRITE) ;
-//            model = dataset1.getDefaultModel() ;
-//            dataset1.end() ;
-
+         
         } catch (IOException ex) {
             Logger.getLogger(OntologyRestController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -178,7 +177,7 @@ public class OntologyRestController {
             instancepropertiesArray.put(subclass.toString());
 
         }
-        
+
         JSONObject instance = new JSONObject();
         instance.put("Instance", instanceURI);
         instance.put("properties", instancepropertiesArray);

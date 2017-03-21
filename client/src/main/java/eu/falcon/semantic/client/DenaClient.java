@@ -165,8 +165,8 @@ public class DenaClient {
         //System.out.println("instancesRequest " + instancesRequest);
 
         //Do query example
-        String queryResult = runQuery(sparqlQuery);
-        System.out.println("queryResult " + queryResult);
+//        String queryResult = runQuery(sparqlQuery);
+//        System.out.println("queryResult " + queryResult);
         /*
         //get Instance Attributes
         String instanceAttributes = getInstanceAttributes("https://w3id.org/saref#Sensor15233");
