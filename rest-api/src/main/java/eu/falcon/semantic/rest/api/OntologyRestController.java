@@ -51,7 +51,7 @@ public class OntologyRestController {
     public RestResponse getDatasetNames() {
         RestTemplate restTemplate = new RestTemplate();
         LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
-        final String uri = "http://192.168.3.15:3030/$/server";
+        final String uri = triplestorURL+"/$/server";
 
         String result = restTemplate.getForObject(uri, String.class);
         JSONObject jsonObj = new JSONObject(result);
@@ -127,7 +127,7 @@ public class OntologyRestController {
 
             Webb webb = Webb.create();
             Response<String> result = webb
-                    .post("http://192.168.3.15:3030/$/datasets/")
+                    .post(triplestorURL+"/$/datasets/")
                     .header("Content-Type", "application/x-www-form-urlencoded")
                     .body("dbName="+dataset+"&dbType=tdb").asString();
             
